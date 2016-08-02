@@ -8,7 +8,12 @@
 	}
  
 	# Establish db connection
-	$db = pg_connect(pg_connection_string());
+	try {
+		$db = pg_connect(pg_connection_string());
+	} catch (Exception $e) {
+		dd('error');
+	}
+	
 	if (!$db) {
 	    echo "Database connection error."
 	    exit;
