@@ -8,17 +8,11 @@
 	}
  
 	# Establish db connection
-	try {
-		$db = pg_connect(pg_connection_string());
-	} catch (Exception $e) {
-		dd('error');
-	}
 	
-	if (!$db) {
-	    echo "Database connection error."
-	    exit;
-	}
+	$db = new DB_connect();
 
+	$connection = $db->connect();
+	
 	echo "connected successfully!";
  
 	// $result = pg_query($db, "SELECT statement goes here");
