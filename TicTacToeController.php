@@ -11,11 +11,13 @@ class TicTacToeController
 
 	public function verifyExistingGame($connection, $channelId)
 	{
-		$query = "SELECT * FROM public.tictactoe WHERE channel_id = " . $channelId;
+		echo 'verifying';
+		echo $channelId;
+		$query = "SELECT * FROM public.tictactoe WHERE channel_id = D1X6BJKPS";
 		$result = pg_query($connection, $query);
 
 		$row = pg_fetch_array($result);
-		echo $row;
+
 		if (empty($row)) {
 			return false;
 		}
