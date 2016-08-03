@@ -13,7 +13,7 @@ include 'GameBoard.php';
 	$db = new DB_connect();
 	$connection = $db->connect();
 	
-	$result = pg_query($connection, "SELECT * FROM tictactoe");
+	$result = pg_query($connection, "SELECT * FROM public.tictactoe");
 
 	while ($row = pg_fetch_row($result)) {
 		echo $row[0];
