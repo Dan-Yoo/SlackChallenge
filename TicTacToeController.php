@@ -149,9 +149,9 @@ class TicTacToeController
 			//$this->isWinning();
 
 			//if not, just insert it into table.
-
+			echo $inputString . "\n";
 			//insert into the table.
-			$query = "UPDATE tictactoe SET turn = '$turn', '$inputString' = '$symbol' WHERE channel_id = $channelId";
+			$query = "UPDATE tictactoe SET turn = '$turn', 'r2_c2' = '$symbol' WHERE channel_id = $channelId";
 			pg_query($connection, $query);
 
 			echo "inserted the players move into db. \n";
@@ -165,7 +165,7 @@ class TicTacToeController
 		echo "yay im getting this! \n";
 
 
-		//change the turn
+		//change the turn 
 
 		//check if win
 
