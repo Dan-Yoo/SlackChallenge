@@ -33,7 +33,7 @@ class HttpHelper
 	 */
 	public function displayResponse($message, $data, $color = "good")
 	{
-		foreach ($data as $datum) {
+		foreach ($data as &$datum) {
 			if (empty($datum)) {
 				$datum = '_';
 			}
