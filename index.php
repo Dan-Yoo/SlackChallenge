@@ -27,13 +27,10 @@ include 'TicTacToeController.php';
 		return true;
 	}
 
-	//echo "There is a board for this channel already \n\n";
-
-	//check if the user entering command is the dude that has to play next.
-
 	//commands
 	if (substr($command, 0, 4) == 'play') {
-		$controller->playMove($GLOBALS['connection'], $playerOne, $channelId, $command);
+		echo $controller->playMove($GLOBALS['connection'], $playerOne, $channelId, $command);
+		return true;
 	}
 
 	if ($command == 'display') {
