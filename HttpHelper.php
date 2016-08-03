@@ -50,9 +50,6 @@ class HttpHelper
 
 		$attachmentText = "It is currently " . $playersTurn . "'s turn to play. (" . $row['symbol'] . ")";
 
-		// $row1 = $data['r1_c1']." ".$data['r1_c2']." ".$data['r1_c3'];
-		// $row2 = $data['r2_c1']." ".$data['r2_c2']." ".$data['r2_c3'];
-		// $row3 = $data['r3_c1']." ".$data['r3_c2']." ".$data['r3_c3'];
 		$row1 = $data['r1_c1'].$data['r1_c2'].$data['r1_c3'];
 		$row2 = $data['r2_c1'].$data['r2_c2'].$data['r2_c3'];
 		$row3 = $data['r3_c1'].$data['r3_c2'].$data['r3_c3'];
@@ -75,11 +72,6 @@ class HttpHelper
 			"attachments" 	=> $attachment
 		);
 
-		// $response = array(
-		// 	"response_type" => "in_channel",
-		// 	"text" 			=> "testing success"
-		// );
-
 		return json_encode($response);
 	}
 
@@ -97,6 +89,22 @@ class HttpHelper
 
 		$response = array(
 			"response_type" => "in_channel",
+			"text" 			=> $message
+		);
+
+		return json_encode($response);
+	}
+
+	/**
+	 * Response for game winning move
+	 *
+	 * @param string $winner
+	 * @return json response
+	 * @author d_yoo
+	 */
+	public function genericResponse($message)
+	{
+		$response = array(
 			"text" 			=> $message
 		);
 

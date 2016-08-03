@@ -90,24 +90,15 @@ class TicTacToeController
 	public function displayBoard($connection, $channelId)
 	{
 		if ($this::verifyExistingGame($connection, $channelId)) {
-			//echo "this is the current board. lol";
-
 			$query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
 			$result = pg_query($connection, $query);
 
 			$row = pg_fetch_array($result, 0, PGSQL_ASSOC);
 			
-			//TODO create the display for the board
-			//u can access each cell as shown below.
-			//echo $row['r1_c1'];
-
-			//echo "------------\n";
-			//echo "------------\n";
 
 			return HttpHelper::displayResponse("This is the current board", $row, "good");
 		}
 
-		//echo "There is currently no games being played in this channel!\n";
 		return HttpHelper::displayResponse("There is no game in this channel", null, "good");;
 	}
 
@@ -127,16 +118,14 @@ class TicTacToeController
 			$turn 	= 2;
 
 			if ($user != $row['player_1']) {
-				//echo "It isn't your turn to play!";
-				die;
+				return HttpHelper::genericResponse("It isn't your turn to play!");
 			}
 		} else {
 			$symbol = "O";
 			$turn 	= 1;	
 
 			if ($user != $row['player_2']) {
-				//echo "It isn't your turn to play!";
-				die;
+				return HttpHelper::genericResponse("It isn't your turn to play!");
 			}
 		}
 		//validate their entry
@@ -146,38 +135,23 @@ class TicTacToeController
 		if (1 <= $inputRow && $inputRow <= 3 && 1 <= $inputColumn && $inputColumn <= 3) {
 			//check if the coordinates is empty or not
 			if (!empty($row[$inputString])) {
-				//echo "Your opponent already played on this spot!\n";
-				return;
+				return HttpHelper::genericResponse("This spot was already played on!");
 			}
 
 			//check if this will cause a winning move
 			//$this->isWinning();
-
-			//if not, just insert it into table.
 
 			//insert into the table.
 			$data 		= array('turn' => $turn, $inputString => $symbol);
 			$condition 	= array('channel_id' => $channelId);
 			$update 	= pg_update($connection, 'tictactoe', $data, $condition);
 
-			//echo "inserted the players move into db. \n";
+			$query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
+			$result = pg_query($connection, $query);
+			$row 	= pg_fetch_array($result, 0, PGSQL_ASSOC);
 
-			//$this::displayBoard($connection, $channelId);
-
-			return;
+			return HttpHelper::displayBoard("Good move!", $row);
 		}
-
-
-		//echo "invalid input \n";
-
-		//echo "yay im getting this! \n";
-
-
-		//change the turn 
-
-		//check if win
-
-
 	}
 
 	/**
