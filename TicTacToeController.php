@@ -157,6 +157,8 @@ class TicTacToeController
 
 			echo "inserted the players move into db. \n";
 
+			//$this::displayBoard($connection, $channelId);
+
 			return;
 		}
 
