@@ -151,9 +151,12 @@ class TicTacToeController
 			//if not, just insert it into table.
 			echo $inputString . "\n";
 			//insert into the table.
-			$query = "UPDATE tictactoe SET turn = '$turn', 'r2_c2' = '$symbol' WHERE channel_id = $channelId";
-			pg_query($connection, $query);
 
+			$data 		= array('turn' => $turn, $inputString => $symbol);
+			$condition 	= array('channel_id' => $channelId);
+
+			$update = pg_update($connection, 'tictactoe', $data, $condition);
+			
 			echo "inserted the players move into db. \n";
 
 			return;
