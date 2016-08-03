@@ -125,34 +125,34 @@ class TicTacToeController
 		return;
 	}
 
-	public function playMove($connection, $user, $channelId, $command)
-	{
-		// $query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
-		// $result = pg_query($connection, $query);
-		// $row 	= pg_fetch_array($result, 0, PGSQL_ASSOC);
+	// public function playMove($connection, $user, $channelId, $command)
+	// {
+	// 	// $query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
+	// 	// $result = pg_query($connection, $query);
+	// 	// $row 	= pg_fetch_array($result, 0, PGSQL_ASSOC);
 
-		// //check if it actually is the users turn
-		// if ($row['turn'] == 1) {
-		// 	if ($user != $row['player_1']) {
-		// 		echo "It isn't your turn to play!";
-		// 		die;
-		// 	}
-		// } else {
-		// 	if ($user != $row['player_2']) {
-		// 		echo "It isn't your turn to play!";
-		// 		die;
-		// 	}
-		// }
+	// 	// //check if it actually is the users turn
+	// 	// if ($row['turn'] == 1) {
+	// 	// 	if ($user != $row['player_1']) {
+	// 	// 		echo "It isn't your turn to play!";
+	// 	// 		die;
+	// 	// 	}
+	// 	// } else {
+	// 	// 	if ($user != $row['player_2']) {
+	// 	// 		echo "It isn't your turn to play!";
+	// 	// 		die;
+	// 	// 	}
+	// 	// }
 
-		echo "yay im getting this! \n";
-
-
-		//change the turn
-
-		//check if win
+	// 	echo "yay im getting this! \n";
 
 
-	}
+	// 	//change the turn
+
+	// 	//check if win
+
+
+	// }
 
 	/**
 	 * Method that removes the game from the datatable
