@@ -2,6 +2,13 @@
 
 class TicTacToeController
 {
+
+	/**
+	 * Verifies Slack token
+	 *
+	 * @param string $token
+	 * @author d_yoo
+	 */
 	public function verifyToken($token)
 	{
 		if ($token != 'tywWH21kkZOVWWB7tGQLbbzc') {
@@ -9,6 +16,14 @@ class TicTacToeController
 		}
 	}
 
+	/**
+	 * Verifies if there is currently a game being played in given channel
+	 *
+	 * @param $connection
+	 * @param $channelId
+	 * @return boolean
+	 * @author d_yoo
+	 */
 	public function verifyExistingGame($connection, $channelId)
 	{
 		$query = "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
@@ -31,6 +46,9 @@ class TicTacToeController
 	 */
 	public function initializeGame($connection, $playerOne, $playerTwo, $channelId)
 	{
+		//TODO::
+		//validate that player 2 is indeed a user in the current channel
+
 		$row1 		= array('column1' => '', 'column2' => '', 'column3' => '');
 		$row2 		= array('column1' => '', 'column2' => '', 'column3' => '');
 		$row3 		= array('column1' => '', 'column2' => '', 'column3' => '');
@@ -47,9 +65,9 @@ class TicTacToeController
 
 		pg_insert($connection, 'public.tictactoe', $row);
 
-		echo "Tic-Tac-Toe game has begun!<br>";
+		echo "Tic-Tac-Toe game has begun!\n";
 		echo $playerOne . " VS " . $playerTwo;
-		//INSERT INTO table 
+		echo "\n";
 	}
 
 	/**
@@ -90,9 +108,14 @@ class TicTacToeController
 	 * @return string that is displayed for users to visualize the current board
 	 * @author d_yoo
 	 */
-	public function displayBoard()
+	public function displayBoard($connection, $channelId)
 	{
-		//retrieve rows from table, display it, nicely formatted.
+		if ($this::verifyExistingGame($connection, $channelId)) {
+			echo "this is the current board. lol";
+			return true;
+		}
+
+		echo "There is currently no games being played in this channel!";
 	}
 
 	/**

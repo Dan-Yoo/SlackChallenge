@@ -8,11 +8,11 @@ include 'TicTacToeController.php';
 	$token 		= $_POST['token'];
 	$channelId 	= $_POST['channel_id'];
 	$playerOne	= $_POST['user_name'];
-	$playerTwo	= $_POST['text'];
+	$command	= $_POST['text'];
 
 	//verify token from Slack
 	//$controller->verifyToken($token);
-	echo $channelId;
+
 	//connect to database
 	$db = new DB_connect();
 	$GLOBALS['connection'] = $db->connect();
@@ -20,12 +20,19 @@ include 'TicTacToeController.php';
 	$gameExists = $controller->verifyExistingGame($GLOBALS['connection'], $channelId);
 
 	if (!$gameExists) {
-		$controller->initializeGame($GLOBALS['connection'], $playerOne, $playerTwo, $channelId);
+		$controller->initializeGame($GLOBALS['connection'], $playerOne, $command, $channelId);
 
 		return true;
 	}
 
-	echo "There is a board for this channel already";
+	echo "There is a board for this channel already \n\n";
+
+	//check if the user entering command is the dude that has to play next.
+
+	//commands
+	if ($command == 'display') {
+		$controller->displayBoard($connection, $channelId);
+	}
 
 	$db->close($GLOBALS['connection']);
 
