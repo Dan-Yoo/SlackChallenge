@@ -138,7 +138,7 @@ class TicTacToeController
 				die;
 			}
 		} else {
-			if ($user != $row['player2']) {
+			if ($user != $row['player_2']) {
 				echo "It isn't your turn to play!";
 				die;
 			}
