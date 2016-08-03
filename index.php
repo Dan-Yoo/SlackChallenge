@@ -19,16 +19,23 @@ include 'TicTacToeController.php';
 	$query = "SELECT * FROM public.tictactoe WHERE channel_id = " . $channelId;
 	$result = pg_query($GLOBALS['conn'], $query);
 
-	while ($row = pg_fetch_row($result)) {
-		echo $row[0] . $row[1] . $row[2];
-		echo $row['channel_id'];
-		print_r($row);
+	$row = pg_fetch_row($result);
+
+	if (empty($row)) {
+		echo "channel id not found";
 	}
+
+	echo "channel id foudn";
+	// while ($row = pg_fetch_row($result)) {
+	// 	echo $row[0] . $row[1] . $row[2];
+	// 	echo $row['channel_id'];
+	// 	print_r($row);
+	// }
 	
-	//initializing phase
-	$playerOne = $_POST['user_name'];
-	$playerTwo = $_POST['text'];
-	$channelId = $_POST['channel_id'];
+	// //initializing phase
+	// $playerOne = $_POST['user_name'];
+	// $playerTwo = $_POST['text'];
+	// $channelId = $_POST['channel_id'];
 
 	// $gameBoard = new GameBoard();
 	// $gameBoard->initialize($playerOne, $playerTwo);
