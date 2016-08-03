@@ -118,7 +118,7 @@ class TicTacToeController
 
 		//check if it actually is the users turn
 		if ($row['turn'] == 1) {
-			$symbol = 'X';
+			$symbol = "X";
 			$turn 	= 2;
 
 			if ($user != $row['player_1']) {
@@ -126,7 +126,7 @@ class TicTacToeController
 				die;
 			}
 		} else {
-			$symbol = 'O';
+			$symbol = "O";
 			$turn 	= 1;	
 
 			if ($user != $row['player_2']) {
@@ -137,7 +137,7 @@ class TicTacToeController
 		//validate their entry
 		$inputRow	 = substr($command, 4, 1);
 		$inputColumn = substr($command, 5, 1);
-		$inputString = 'r' . $inputRow . '_c' . $inputColumn;
+		$inputString = "r" . $inputRow . "_c" . $inputColumn;
 		if (1 <= $inputRow && $inputRow <= 3 && 1 <= $inputColumn && $inputColumn <= 3) {
 			//check if the coordinates is empty or not
 			if (!empty($row[$inputString])) {
