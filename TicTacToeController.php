@@ -11,9 +11,7 @@ class TicTacToeController
 
 	public function verifyExistingGame($connection, $channelId)
 	{
-		echo 'verifying';
-		echo $channelId;
-		$query = "SELECT * FROM public.tictactoe WHERE channel_id = 'D1X6BJKPS'";
+		$query = "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
 		$result = pg_query($connection, $query);
 
 		$row = pg_fetch_array($result);
