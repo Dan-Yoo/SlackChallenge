@@ -29,8 +29,11 @@ class TicTacToeController
 	 * @param POST $data
 	 * @author d_yoo
 	 */
-	public function initializeGame()
+	public function initializeGame($playerOne, $playerTwo, $channelId)
 	{
+		$query = "INSERT INTO public.tictactoe (player_1, player_2, channel_id) VALUES (".$playerOne.",".$playerTwo.",".$channelId.")";
+
+		$result = pg_query($GLOBAL['connection'], $query);
 		//$playerOne = $data['user_name'];
 		//$playerTwo = $data['text'];
 		//$channelId = $data['channel_id'];

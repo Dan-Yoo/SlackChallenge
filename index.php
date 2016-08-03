@@ -7,6 +7,8 @@ include 'TicTacToeController.php';
 	
 	$token 		= $_POST['token'];
 	$channelId 	= $_POST['channel_id'];
+	$playerOne	= $_POST['user_name'];
+	$playerTwo	= $_POST['text'];
 
 	//verify token from Slack
 	$controller->verifyToken($token);
@@ -18,9 +20,9 @@ include 'TicTacToeController.php';
 	$gameExists = $controller->verifyExistingGame($GLOBALS['connection'], $channelId);
 
 	if (!$gameExists) {
-		$controller->initializeGame();
+		$controller->initializeGame($playerOne, $playerTwo, $channelId);
 
-		return "OH YES";
+		return true;
 	}
 
 	echo "lalalalalalala";
