@@ -20,7 +20,7 @@ include 'TicTacToeController.php';
 	$gameExists = $controller->verifyExistingGame($GLOBALS['connection'], $channelId);
 
 	if (!$gameExists) {
-		$controller->initializeGame($playerOne, $playerTwo, $channelId);
+		$controller->initializeGame($GLOBALS['connection'], $playerOne, $playerTwo, $channelId);
 
 		return true;
 	}
