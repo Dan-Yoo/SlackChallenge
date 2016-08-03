@@ -31,21 +31,23 @@ class TicTacToeController
 	 */
 	public function initializeGame($connection, $playerOne, $playerTwo, $channelId)
 	{
-		//$query = "INSERT INTO public.tictactoe (player_1, player_2, channel_id) VALUES (".$playerOne.",".$playerTwo.",".$channelId.")";
-		$array = array(
-			'player_1' => 'KINGDDD123',
-			'player_2' => 'TRALALALALA',
-			'channel_id' => 1236,
-			'turn' => 1,
-			'board' => '{}'
-		);
-		pg_insert($connection, 'public.tictactoe', $array);
-		
-		//$playerOne = $data['user_name'];
-		//$playerTwo = $data['text'];
-		//$channelId = $data['channel_id'];
+		$row1 	= array('column1' => '', 'column2' => '', 'column3' => '');
+		$row2 	= array('column1' => '', 'column2' => '', 'column3' => '');
+		$row3 	= array('column1' => '', 'column2' => '', 'column3' => '');
+		$board 	= array('row1' => $row1,'row2' => $row2, 'row3' => $row3);
 
-		echo "game has been initialized!";
+		$row = array(
+			'player_1' => $playerOne,
+			'player_2' => $playerTwo,
+			'channel_id' => $channelId,
+			'turn' => 1,
+			'board' => $board
+		);
+
+		pg_insert($connection, 'public.tictactoe', $row);
+
+		echo "Tic-Tac-Toe game has begun!<br>";
+		echo $playerOne . " VS " . $playerTwo;
 		//INSERT INTO table 
 	}
 
