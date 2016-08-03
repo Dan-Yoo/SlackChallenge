@@ -7,11 +7,11 @@ include 'TicTacToeController.php';
 	
 	$token 		= $_POST['token'];
 	$channelId 	= $_POST['channel_id'];
-	$user		= $_POST['user_name'];
+	$playerOne	= $_POST['user_name'];
 	$command	= $_POST['text'];
 
 	//verify token from Slack
-	$controller->verifyToken($token);
+	//$controller->verifyToken($token);
 
 	//connect to database
 	$db = new DB_connect();
@@ -20,7 +20,7 @@ include 'TicTacToeController.php';
 	$gameExists = $controller->verifyExistingGame($GLOBALS['connection'], $channelId);
 
 	if (!$gameExists) {
-		$controller->initializeGame($GLOBALS['connection'], $user, $command, $channelId);
+		$controller->initializeGame($GLOBALS['connection'], $playerOne, $command, $channelId);
 
 		return true;
 	}
@@ -30,10 +30,8 @@ include 'TicTacToeController.php';
 	//check if the user entering command is the dude that has to play next.
 
 	//commands
-	//if (substr($command, 0, 4) == 'play') {
-		//$controller->playMove($GLOBALS['connection'], $user, $channelId, $command);
-	//}
-
+	
+	
 	if ($command == 'display') {
 		$controller->displayBoard($connection, $channelId);
 	}
