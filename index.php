@@ -38,6 +38,7 @@ include 'TicTacToeController.php';
 
 	if ($command == 'display') {
 		$controller->displayBoard($connection, $channelId);
+		return true;
 	}
 
 
