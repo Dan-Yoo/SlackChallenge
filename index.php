@@ -27,7 +27,7 @@ include 'TicTacToeController.php';
 		return true;
 	}
 
-	echo "There is a board for this channel already \n\n";
+	//echo "There is a board for this channel already \n\n";
 
 	//check if the user entering command is the dude that has to play next.
 
@@ -42,7 +42,7 @@ include 'TicTacToeController.php';
 
 
 
-	echo "\n END";
+	//echo "\n END";
 
 	$db->close($GLOBALS['connection']);
 

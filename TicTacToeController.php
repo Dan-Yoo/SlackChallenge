@@ -85,7 +85,7 @@ class TicTacToeController
 	public function displayBoard($connection, $channelId)
 	{
 		if ($this::verifyExistingGame($connection, $channelId)) {
-			echo "this is the current board. lol";
+			//echo "this is the current board. lol";
 
 			$query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
 			$result = pg_query($connection, $query);
@@ -94,15 +94,15 @@ class TicTacToeController
 			
 			//TODO create the display for the board
 			//u can access each cell as shown below.
-			echo $row['r1_c1'];
+			//echo $row['r1_c1'];
 
-			echo "------------\n";
-			echo "------------\n";
+			//echo "------------\n";
+			//echo "------------\n";
 
 			return;
 		}
 
-		echo "There is currently no games being played in this channel!\n";
+		//echo "There is currently no games being played in this channel!\n";
 		return;
 	}
 
@@ -122,7 +122,7 @@ class TicTacToeController
 			$turn 	= 2;
 
 			if ($user != $row['player_1']) {
-				echo "It isn't your turn to play!";
+				//echo "It isn't your turn to play!";
 				die;
 			}
 		} else {
@@ -130,7 +130,7 @@ class TicTacToeController
 			$turn 	= 1;	
 
 			if ($user != $row['player_2']) {
-				echo "It isn't your turn to play!";
+				//echo "It isn't your turn to play!";
 				die;
 			}
 		}
@@ -141,7 +141,7 @@ class TicTacToeController
 		if (1 <= $inputRow && $inputRow <= 3 && 1 <= $inputColumn && $inputColumn <= 3) {
 			//check if the coordinates is empty or not
 			if (!empty($row[$inputString])) {
-				echo "Your opponent already played on this spot!\n";
+				//echo "Your opponent already played on this spot!\n";
 				return;
 			}
 
@@ -155,7 +155,7 @@ class TicTacToeController
 			$condition 	= array('channel_id' => $channelId);
 			$update 	= pg_update($connection, 'tictactoe', $data, $condition);
 
-			echo "inserted the players move into db. \n";
+			//echo "inserted the players move into db. \n";
 
 			//$this::displayBoard($connection, $channelId);
 
@@ -163,9 +163,9 @@ class TicTacToeController
 		}
 
 
-		echo "invalid input \n";
+		//echo "invalid input \n";
 
-		echo "yay im getting this! \n";
+		//echo "yay im getting this! \n";
 
 
 		//change the turn 
