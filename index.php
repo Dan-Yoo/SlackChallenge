@@ -11,7 +11,7 @@ include 'TicTacToeController.php';
 	$command	= $_POST['text'];
 
 	//verify token from Slack
-	//$controller->verifyToken($token);
+	$controller->verifyToken($token);
 
 	//connect to database
 	$db = new DB_connect();
@@ -31,7 +31,7 @@ include 'TicTacToeController.php';
 
 	//commands
 	//if (substr($command, 0, 4) == 'play') {
-		$controller->playMove($GLOBALS['connection'], $user, $channelId, $command);
+		//$controller->playMove($GLOBALS['connection'], $user, $channelId, $command);
 	//}
 
 	if ($command == 'display') {
