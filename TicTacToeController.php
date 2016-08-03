@@ -119,7 +119,7 @@ class TicTacToeController
 
 			$board = json_decode($row[0]);
 
-			echo $board;
+			var_dump($row[0]);
 
 			return true;
 		}
