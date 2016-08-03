@@ -111,9 +111,12 @@ class TicTacToeController
 
 			$row = pg_fetch_array($result, 0, PGSQL_ASSOC);
 			
+			//TODO create the display for the board
+			//u can access each cell as shown below.
 			echo $row['r1_c1'];
-			echo $row['player_1'];
-			echo "helpme \n";
+
+			echo "------------\n";
+			echo "------------\n";
 
 			return;
 		}
@@ -122,13 +125,42 @@ class TicTacToeController
 		return;
 	}
 
+	public function playMove($connection, $user, $channelId, $command)
+	{
+		$query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
+		$result = pg_query($connection, $query);
+		$row 	= pg_fetch_array($result, 0, PGSQL_ASSOC);
+
+		//check if it actually is the users turn
+		if ($row['turn'] == 1) {
+			if ($user != $row['player_1']) {
+				echo "It isn't your turn to play!";
+				die;
+			}
+		} else {
+			if ($user != $row['player2']) {
+				echo "It isn't your turn to play!";
+				die;
+			}
+		}
+
+		echo "yay im getting this! \n";
+
+
+		//change the turn
+
+		//check if win
+
+
+	}
+
 	/**
 	 * Method that removes the game from the datatable
 	 *
 	 * @param int $channelId
 	 * @author d_yoo
 	 */
-	public function destroyTable($channelId)
+	public function destroyBoard($channelId)
 	{
 		//query to remove row of channelid given
 	}
