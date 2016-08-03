@@ -1,5 +1,7 @@
 <?php
 
+include 'HttpHelper.php';
+
 class TicTacToeController
 {
 
@@ -49,18 +51,19 @@ class TicTacToeController
 		//TODO::
 		//validate that player 2 is indeed a user in the current channel
 
-		$row = array(
-			'player_1' 		=> $playerOne,
-			'player_2' 		=> $playerTwo,
-			'channel_id' 	=> $channelId,
-			'turn' 			=> 1
-		);
+		// $row = array(
+		// 	'player_1' 		=> $playerOne,
+		// 	'player_2' 		=> $playerTwo,
+		// 	'channel_id' 	=> $channelId,
+		// 	'turn' 			=> 1
+		// );
 
-		pg_insert($connection, 'public.tictactoe', $row);
+		// pg_insert($connection, 'public.tictactoe', $row);
 
-		echo "Tic-Tac-Toe game has begun!\n";
-		echo $playerOne . " VS " . $playerTwo;
-		echo "\n";
+		// echo "Tic-Tac-Toe game has begun!\n";
+		// echo $playerOne . " VS " . $playerTwo;
+		// echo "\n";
+		echo HttpHelper::gameStartResponse($playerOne, $playerTwo);
 	}
 
 	/**
