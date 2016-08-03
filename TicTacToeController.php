@@ -111,7 +111,7 @@ class TicTacToeController
 
 			$row = pg_fetch_array($result, 0);
 			
-			echo $row[0]['r1_c1'];
+			echo $row[3];
 
 			return;
 		}
