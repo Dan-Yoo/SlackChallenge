@@ -14,7 +14,7 @@ class TicTacToeController
 		$query = "SELECT * FROM public.tictactoe WHERE channel_id = " . $channelId;
 		$result = pg_query($connection, $query);
 
-		$row = pg_fetch_row($result);
+		$row = pg_fetch_array($result);
 
 		if (empty($row)) {
 			return false;
