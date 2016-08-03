@@ -15,7 +15,7 @@ class TicTacToeController
 		$result = pg_query($connection, $query);
 
 		$row = pg_fetch_array($result);
-
+		echo $row;
 		if (empty($row)) {
 			return false;
 		}
