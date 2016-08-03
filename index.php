@@ -34,6 +34,9 @@ include 'TicTacToeController.php';
 		$controller->displayBoard($connection, $channelId);
 	}
 
+
+	echo "\n END";
+
 	$db->close($GLOBALS['connection']);
 
 ?>
