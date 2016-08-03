@@ -17,7 +17,7 @@ class TicTacToeController
 		$row = pg_fetch_row($result);
 
 		if (empty($row)) {
-			$this::initialize();
+			$this::initializeGame();
 		}
 	}
 
@@ -27,7 +27,7 @@ class TicTacToeController
 	 * @param POST $data
 	 * @author d_yoo
 	 */
-	public function initializeGame($data)
+	public function initializeGame()
 	{
 		//$playerOne = $data['user_name'];
 		//$playerTwo = $data['text'];
