@@ -12,7 +12,7 @@ include 'TicTacToeController.php';
 
 	//connect to database
 	$db = new DB_connect();
-	$connection = $db->connect();
+	$GLOBALS['conn'] = $db->connect();
 	
 	//check if channel id exists in db. If it doesnt, initialize one!
 	// $query = "SELECT id FROM public.tictactoe WHERE channel_id = 111";
@@ -26,7 +26,7 @@ include 'TicTacToeController.php';
 	// die('there was a result!')
 
 
-	$result = pg_query($connection, "SELECT * FROM public.tictactoe WHERE channel_id = 111");
+	$result = pg_query($GLOBALS['conn'], "SELECT * FROM public.tictactoe WHERE channel_id = 152");
 
 	while ($row = pg_fetch_row($result)) {
 		echo $row[0] . $row[1] . $row[2];
@@ -45,6 +45,6 @@ include 'TicTacToeController.php';
 
 
 
-	$db->close($connection);
+	$db->close($GLOBALS['conn']);
 
 ?>
