@@ -31,11 +31,11 @@ class TicTacToeController
 	 */
 	public function initializeGame($connection, $playerOne, $playerTwo, $channelId)
 	{
-		// $row1 		= array('column1' => '', 'column2' => '', 'column3' => '');
-		// $row2 		= array('column1' => '', 'column2' => '', 'column3' => '');
-		// $row3 		= array('column1' => '', 'column2' => '', 'column3' => '');
-		// $board 		= array('row1' => $row1,'row2' => $row2, 'row3' => $row3);
-		// $jsonBoard 	= json_encode($board);
+		$row1 		= array('column1' => '', 'column2' => '', 'column3' => '');
+		$row2 		= array('column1' => '', 'column2' => '', 'column3' => '');
+		$row3 		= array('column1' => '', 'column2' => '', 'column3' => '');
+		$board 		= array('row1' => $row1,'row2' => $row2, 'row3' => $row3);
+		$jsonBoard 	= json_encode($board);
 
 		$row = array(
 			'player_1' 		=> $playerOne,
