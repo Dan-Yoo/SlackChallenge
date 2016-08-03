@@ -39,7 +39,7 @@ class TicTacToeController
 			'turn' => 1,
 			'board' => '{}'
 		);
-		pg_insert($GLOBAL['connection'], 'public.tictactoe', $array);
+		pg_insert($connection, 'public.tictactoe', $array);
 		
 		//$playerOne = $data['user_name'];
 		//$playerTwo = $data['text'];

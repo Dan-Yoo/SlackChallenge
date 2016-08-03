@@ -11,7 +11,7 @@ include 'TicTacToeController.php';
 	$playerTwo	= $_POST['text'];
 
 	//verify token from Slack
-	$controller->verifyToken($token);
+	//$controller->verifyToken($token);
 
 	//connect to database
 	$db = new DB_connect();
