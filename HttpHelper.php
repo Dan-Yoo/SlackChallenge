@@ -50,6 +50,11 @@ class HttpHelper
 			2 => array("title" => $row3),
 		);
 
+		$attachment = array (
+			0 => array("fields" => $board),
+			1 => array("color" => $color)
+		);
+
 		$response = array(
 			"response_type" => "in_channel",
 			"text" 			=> $message,
