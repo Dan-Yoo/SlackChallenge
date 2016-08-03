@@ -17,7 +17,9 @@ include 'TicTacToeController.php';
 	//check if channel id exists in db. If it doesnt, initialize one!
 	$query = "SELECT id FROM public.tictactoe WHERE channel_id = 111";
 	$result = pg_query($connection, $query);
+	$row = pg_fetch_row($result);
 
+	dd($row);
 	// if (!pg_fetch_row($result)) {
 	// 	die('no results foudn');
 	// }
