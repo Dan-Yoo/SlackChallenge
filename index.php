@@ -7,20 +7,24 @@ include 'GameBoard.php';
 
 	//make sure the request comes from Slack
 	if ($token != 'tywWH21kkZOVWWB7tGQLbbzc') {
-		echo 'What are you doing here >:( I only accept requests from Slack!';
+		die("What are you doing here >:( I only accept requests from Slack!");
 	}
 
-	//initializing phase
+	$db = new DB_connect();
+	$connection = $db->connect();
+	
+	$result = pg_query($connection, "SELECT * FROM tictactoe");
 
+	while ($row = pg_fetch_row($result)) {
+		echo $row;
+	}
+	
+	//initializing phase
 	$playerOne = $_POST['user_name'];
 	$playerTwo = $_POST['text'];
+	$channelId = $_POST['channel_id'];
+
 	$gameBoard = new GameBoard();
 	$gameBoard->initialize($playerOne, $playerTwo);
-
-	$db = new DB_connect();
-	$db->connect();
-    
-	
-	echo "connected successfully!";
 
 ?>
