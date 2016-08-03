@@ -20,6 +20,11 @@ class DB_Connect
         return $db;
     }
 
+    public function close($connection)
+    {
+        pg_close($connection);
+    }
+
 }
 
 ?>

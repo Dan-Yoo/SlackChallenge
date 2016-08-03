@@ -16,7 +16,7 @@ include 'GameBoard.php';
 	$result = pg_query($connection, "SELECT * FROM tictactoe");
 
 	while ($row = pg_fetch_row($result)) {
-		echo $row;
+		echo $row[0];
 	}
 	
 	//initializing phase
@@ -26,5 +26,10 @@ include 'GameBoard.php';
 
 	$gameBoard = new GameBoard();
 	$gameBoard->initialize($playerOne, $playerTwo);
+
+
+
+
+	$db->close($connection);
 
 ?>
