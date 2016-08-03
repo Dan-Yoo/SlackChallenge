@@ -25,8 +25,8 @@ include 'TicTacToeController.php';
 
 	// die('there was a result!')
 
-
-	$result = pg_query($GLOBALS['conn'], "SELECT * FROM public.tictactoe WHERE channel_id = 152");
+	$channelId = 111;
+	$result = pg_query($GLOBALS['conn'], "SELECT * FROM public.tictactoe WHERE channel_id = " . $channelId);
 
 	while ($row = pg_fetch_row($result)) {
 		echo $row[0] . $row[1] . $row[2];
