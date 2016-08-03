@@ -119,6 +119,7 @@ class TicTacToeController
 		//check if it actually is the users turn
 		if ($row['turn'] == 1) {
 			$symbol = 'X';
+			$turn 	= 2;
 
 			if ($user != $row['player_1']) {
 				echo "It isn't your turn to play!";
@@ -126,6 +127,7 @@ class TicTacToeController
 			}
 		} else {
 			$symbol = 'O';
+			$turn 	= 1;	
 
 			if ($user != $row['player_2']) {
 				echo "It isn't your turn to play!";
@@ -143,12 +145,24 @@ class TicTacToeController
 				return;
 			}
 
+			//check if this will cause a winning move
+			//$this->isWinning();
+
+			//if not, just insert it into table.
+
 			//insert into the table.
-			echo "good entry\n";
+			$playedMove = array(
+				'turn' 		 => $turn,
+				$inputString => $symbol
+			)
+
+			pg_insert($connection, 'public.tictactoe', $playedMove);
+
+			echo "inserted the players move into db. \n";
 		}
 
 
-
+		echo "invalid input \n";
 
 		echo "yay im getting this! \n";
 
