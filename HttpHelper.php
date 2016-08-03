@@ -33,16 +33,29 @@ class HttpHelper
 	 */
 	public function displayResponse($message, $data, $color = "good")
 	{
-		$turn = $data['turn'];
-		$text = "this is my text";
-		$color = "good";
-		// $row1 = "X O O"; 
-		// $row2 = "X O X";
-		// $row3 = "O X O";
+		foreach ($data as $datum) {
+			if (empty($datum)) {
+				$datum = '_';
+			}
+		}
 
-		$row1 = $data['r1_c1']." ".$data['r1_c2']." ".$data['r1_c3'];
-		$row2 = $data['r2_c1']." ".$data['r2_c2']." ".$data['r2_c3'];
-		$row3 = $data['r3_c1']." ".$data['r3_c2']." ".$data['r3_c3'];
+		$turn = $data['turn'];
+		$color = "good";
+
+		if ($turn == 1) {
+			$playersTurn = $row['player_1'];
+		} else {
+			$playersTurn = $row['player_2'];
+		}
+
+		$attachmentText = "It is currently " . $playersTurn . "'s turn to play. (" . $row['symbol'] . ")";
+
+		// $row1 = $data['r1_c1']." ".$data['r1_c2']." ".$data['r1_c3'];
+		// $row2 = $data['r2_c1']." ".$data['r2_c2']." ".$data['r2_c3'];
+		// $row3 = $data['r3_c1']." ".$data['r3_c2']." ".$data['r3_c3'];
+		$row1 = $data['r1_c1'].$data['r1_c2'].$data['r1_c3'];
+		$row2 = $data['r2_c1'].$data['r2_c2'].$data['r2_c3'];
+		$row3 = $data['r3_c1'].$data['r3_c2'].$data['r3_c3'];
 
 		$board = array(
 			0 => array("title" => $row1), 
@@ -51,8 +64,9 @@ class HttpHelper
 		);
 
 		$attachment = array (
-			0 => array("fields" => $board),
-			1 => array("color" => $color)
+			0 => array("text" 	=> $attachmentText),
+			1 => array("fields" => $board),
+			2 => array("color" 	=> $color)
 		);
 
 		$response = array(
