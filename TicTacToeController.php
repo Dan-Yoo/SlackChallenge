@@ -118,6 +118,10 @@ class TicTacToeController
 
 			while ($row = pg_fetch_assoc($result)) {
 			  	echo $row['board'];
+
+			  	$board = json_decode($row['board']);
+
+			  	echo $board['row1']['column1'];
 			}
 
 			// $board = json_decode($row[0]);
