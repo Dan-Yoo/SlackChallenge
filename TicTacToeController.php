@@ -2,6 +2,25 @@
 
 class TicTacToeController
 {
+	public function verifyToken($token)
+	{
+		if ($token != 'tywWH21kkZOVWWB7tGQLbbzc') {
+			die("What are you doing here >:( I only accept requests from Slack!");
+		}
+	}
+
+	public function verifyExistingGame($connection, $channelId)
+	{
+		$query = "SELECT * FROM public.tictactoe WHERE channel_id = " . $channelId;
+		$result = pg_query($connection, $query);
+
+		$row = pg_fetch_row($result);
+
+		if (empty($row)) {
+			$this::initialize();
+		}
+	}
+
 	/**
 	 * Initializes a tic-tac-toe game for the channel
      *
@@ -13,7 +32,7 @@ class TicTacToeController
 		//$playerOne = $data['user_name'];
 		//$playerTwo = $data['text'];
 		//$channelId = $data['channel_id'];
-
+		echo "initializing game!";
 		//INSERT INTO table 
 	}
 
@@ -73,12 +92,3 @@ class TicTacToeController
 }
 
 ?>
-
-CREATE TABLE tictactoe(
-   ID INT PRIMARY KEY     NOT NULL,
-   player_1       TEXT    NOT NULL,
-   player_2       TEXT    NOT NULL,
-   channel_id     INT     NOT NULL,
-   turn			  INT     DEFAULT 1,
-   board          jsonb    NOT NULL
-);

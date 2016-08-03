@@ -3,29 +3,21 @@
 include 'DB_connect.php';
 include 'TicTacToeController.php';
 
-	$token = $_POST['token'];
+	$controller = new TicTacToeController();
+	
+	$token 		= $_POST['token'];
+	$channelId 	= $_POST['channel_id'];
 
-	//make sure the request comes from Slack
-	if ($token != 'tywWH21kkZOVWWB7tGQLbbzc') {
-		die("What are you doing here >:( I only accept requests from Slack!");
-	}
+	//verify token from Slack
+	$controller->verifyToken($token);
 
 	//connect to database
 	$db = new DB_connect();
-	$GLOBALS['conn'] = $db->connect();
+	$GLOBALS['connection'] = $db->connect();
 	
-	//check if channel id exists in db. If it doesnt, initialize one!
-	$channelId = $_POST['channel_id'];
-	$query = "SELECT * FROM public.tictactoe WHERE channel_id = " . $channelId;
-	$result = pg_query($GLOBALS['conn'], $query);
+	$controller->verifyExistingGame($GLOBALS['connection'], $channelId);
 
-	$row = pg_fetch_row($result);
-
-	if (empty($row)) {
-		echo "channel id not found";
-	}
-
-	echo "channel id foudn";
+	echo "lalalalalalala";
 	// while ($row = pg_fetch_row($result)) {
 	// 	echo $row[0] . $row[1] . $row[2];
 	// 	echo $row['channel_id'];
