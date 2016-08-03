@@ -149,14 +149,12 @@ class TicTacToeController
 			//$this->isWinning();
 
 			//if not, just insert it into table.
-			echo $inputString . "\n";
-			//insert into the table.
 
+			//insert into the table.
 			$data 		= array('turn' => $turn, $inputString => $symbol);
 			$condition 	= array('channel_id' => $channelId);
+			$update 	= pg_update($connection, 'tictactoe', $data, $condition);
 
-			$update = pg_update($connection, 'tictactoe', $data, $condition);
-			
 			echo "inserted the players move into db. \n";
 
 			return;
