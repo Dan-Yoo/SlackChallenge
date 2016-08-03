@@ -49,18 +49,11 @@ class TicTacToeController
 		//TODO::
 		//validate that player 2 is indeed a user in the current channel
 
-		$row1 		= array('column1' => '', 'column2' => '', 'column3' => '');
-		$row2 		= array('column1' => '', 'column2' => '', 'column3' => '');
-		$row3 		= array('column1' => '', 'column2' => '', 'column3' => '');
-		$board 		= array('row1' => $row1,'row2' => $row2, 'row3' => $row3);
-		$jsonBoard 	= json_encode($board);
-
 		$row = array(
 			'player_1' 		=> $playerOne,
 			'player_2' 		=> $playerTwo,
 			'channel_id' 	=> $channelId,
-			'turn' 			=> 1,
-			'board' 		=> $jsonBoard
+			'turn' 			=> 1
 		);
 
 		pg_insert($connection, 'public.tictactoe', $row);
@@ -113,24 +106,12 @@ class TicTacToeController
 		if ($this::verifyExistingGame($connection, $channelId)) {
 			echo "this is the current board. lol";
 
-			$query 	= "SELECT board FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
+			$query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
 			$result = pg_query($connection, $query);
 
-			while ($row = pg_fetch_assoc($result)) {
-			  	echo $row['board'];
-
-			  	$board = json_decode($row['board']);
-
-			  	echo $board['row1']['column1'];
-			}
-
-			// $board = json_decode($row[0]);
-
-			// $row1 = $board['row1'];
-			// $row2 = $board['row2'];
-			// $row3 = $board['row3'];
-
-			// echo $row1['column1'];
+			$row = pg_fetch_array($result, 0);
+			
+			echo $row[0]['r1_c1'];
 
 			return;
 		}
