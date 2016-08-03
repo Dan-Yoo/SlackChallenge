@@ -58,10 +58,7 @@ class HttpHelper
 		$response = array(
 			"response_type" => "in_channel",
 			"text" 			=> $message,
-			"attachments" 	=> array(
-				"fields" => $board,
-				"color"  => $color
-			)
+			"attachments" 	=> $attachment
 		);
 
 		// $response = array(
