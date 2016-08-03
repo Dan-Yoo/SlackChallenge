@@ -50,5 +50,5 @@ include 'TicTacToeController.php';
 		"text" => "HELLO EVERYONE"
 	);
 
-	return json_encode($array);
+	echo json_encode($array);
 ?>
