@@ -15,12 +15,12 @@ include 'TicTacToeController.php';
 
 	//connect to database
 	$db = new DB_connect();
-	$GLOBAL['connection'] = $db->connect();
+	$GLOBALS['connection'] = $db->connect();
 	
-	$gameExists = $controller->verifyExistingGame($GLOBAL['connection'], $channelId);
+	$gameExists = $controller->verifyExistingGame($GLOBALS['connection'], $channelId);
 
 	if (!$gameExists) {
-		$controller->initializeGame($GLOBAL['connection'], $playerOne, $playerTwo, $channelId);
+		$controller->initializeGame($GLOBALS['connection'], $playerOne, $playerTwo, $channelId);
 
 		return true;
 	}
