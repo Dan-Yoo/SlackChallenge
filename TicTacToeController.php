@@ -113,12 +113,13 @@ class TicTacToeController
 		if ($this::verifyExistingGame($connection, $channelId)) {
 			echo "this is the current board. lol";
 
-			$query = "SELECT board FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
+			$query 	= "SELECT board FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
 			$result = pg_query($connection, $query);
+			$row 	= pg_fetch_array($result);
 
-			$row = pg_fetch_array($result);
+			$board = json_decode($row[0]);
 
-			echo $row[0];
+			echo $board;
 
 			return true;
 		}
