@@ -15,18 +15,9 @@ include 'TicTacToeController.php';
 	$GLOBALS['conn'] = $db->connect();
 	
 	//check if channel id exists in db. If it doesnt, initialize one!
-	// $query = "SELECT id FROM public.tictactoe WHERE channel_id = 111";
-	// $result = pg_query($connection, $query);
-	// $row = pg_fetch_row($result);
-
-		// if (!pg_fetch_row($result)) {
-	// 	die('no results foudn');
-	// }
-
-	// die('there was a result!')
-
-	$channelId = 111;
-	$result = pg_query($GLOBALS['conn'], "SELECT * FROM public.tictactoe WHERE channel_id = " . $channelId);
+	$channelId = $_POST['channel_id'];
+	$query = "SELECT * FROM public.tictactoe WHERE channel_id = " . $channelId;
+	$result = pg_query($GLOBALS['conn'], $query);
 
 	while ($row = pg_fetch_row($result)) {
 		echo $row[0] . $row[1] . $row[2];
