@@ -34,8 +34,8 @@ class TicTacToeController
 		//$playerOne = $data['user_name'];
 		//$playerTwo = $data['text'];
 		//$channelId = $data['channel_id'];
-		
-		die "game has been initialized!";
+
+		echo "game has been initialized!";
 		//INSERT INTO table 
 	}
 

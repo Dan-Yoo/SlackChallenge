@@ -20,7 +20,7 @@ include 'TicTacToeController.php';
 	if (!$gameExists) {
 		$controller->initializeGame();
 	}
-	
+
 	echo "lalalalalalala";
 	// while ($row = pg_fetch_row($result)) {
 	// 	echo $row[0] . $row[1] . $row[2];
