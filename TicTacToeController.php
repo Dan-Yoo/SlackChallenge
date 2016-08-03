@@ -154,9 +154,9 @@ class TicTacToeController
 			$playedMove = array(
 				'turn' 		 => $turn,
 				$inputString => $symbol
-			)
+			);
 
-			//pg_insert($connection, 'public.tictactoe', $playedMove);
+			pg_insert($connection, 'public.tictactoe', $playedMove);
 
 			echo "inserted the players move into db. \n";
 		}
