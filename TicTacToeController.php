@@ -65,7 +65,7 @@ class TicTacToeController
 		// echo "\n";
 
 		//D1X6BJKPS
-		echo HttpHelper::gameStartResponse($playerOne, $playerTwo);
+		return HttpHelper::gameStartResponse($playerOne, $playerTwo);
 	}
 
 	/**
@@ -104,11 +104,11 @@ class TicTacToeController
 			//echo "------------\n";
 			//echo "------------\n";
 
-			echo HttpHelper::displayResponse("This is the current board", $row, "good");
+			return HttpHelper::displayResponse("This is the current board", $row, "good");
 		}
 
 		//echo "There is currently no games being played in this channel!\n";
-		echo HttpHelper::displayResponse("There is no game in this channel", null, "good");;
+		return HttpHelper::displayResponse("There is no game in this channel", null, "good");;
 	}
 
 	/**
