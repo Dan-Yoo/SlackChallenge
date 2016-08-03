@@ -119,12 +119,17 @@ class TicTacToeController
 
 			$board = json_decode($row[0]);
 
-			var_dump($row[0]);
+			$row1 = $board['row1'];
+			$row2 = $board['row2'];
+			$row3 = $board['row3'];
 
-			return true;
+			echo json_encode($row1);
+
+			return;
 		}
 
-		echo "There is currently no games being played in this channel!";
+		echo "There is currently no games being played in this channel!\n";
+		return;
 	}
 
 	/**
