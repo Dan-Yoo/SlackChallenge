@@ -117,8 +117,7 @@ class TicTacToeController
 			$result = pg_query($connection, $query);
 			$row 	= pg_fetch_array($result);
 
-			echo $row;
-			$board = json_decode($row[0]);
+			$board = json_decode($row[0]['board']);
 
 			$row1 = $board['row1'];
 			$row2 = $board['row2'];
