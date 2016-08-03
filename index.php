@@ -47,6 +47,7 @@ include 'TicTacToeController.php';
 	$db->close($GLOBALS['connection']);
 
 	$array = array(
+		"response_type" => "in_channel",
 		"text" => "HELLO EVERYONE"
 	);
 
