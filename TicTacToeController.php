@@ -109,9 +109,10 @@ class TicTacToeController
 			$query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
 			$result = pg_query($connection, $query);
 
-			$row = pg_fetch_array($result, 0);
+			$row = pg_fetch_array($result, 0, PGSQL_ASSOC);
 			
 			echo $row['r1_c1'];
+			echo $row['player_1'];
 			echo "helpme \n";
 
 			return;
