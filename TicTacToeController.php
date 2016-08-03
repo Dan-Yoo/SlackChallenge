@@ -17,8 +17,10 @@ class TicTacToeController
 		$row = pg_fetch_row($result);
 
 		if (empty($row)) {
-			$this::initializeGame();
+			return false;
 		}
+
+		return true;
 	}
 
 	/**
@@ -32,7 +34,8 @@ class TicTacToeController
 		//$playerOne = $data['user_name'];
 		//$playerTwo = $data['text'];
 		//$channelId = $data['channel_id'];
-		echo "initializing game!";
+		
+		die "game has been initialized!";
 		//INSERT INTO table 
 	}
 
