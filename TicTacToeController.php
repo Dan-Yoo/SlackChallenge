@@ -135,8 +135,15 @@ class TicTacToeController
 		//validate their entry
 		$inputRow	 = substr($command, 4, 1);
 		$inputColumn = substr($command, 5, 1);
-		
+		$inputString = 'r' . $inputRow . '_c' . $inputColumn;
 		if (1 <= $inputRow && $inputRow <= 3 && 1 <= $inputColumn && $inputColumn <= 3) {
+			//check if the coordinates is empty or not
+			if (!empty($row[$inputString])) {
+				echo "Your opponent already played on this spot!\n";
+				return;
+			}
+
+			//insert into the table.
 			echo "good entry\n";
 		}
 
