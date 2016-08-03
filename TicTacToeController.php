@@ -123,7 +123,7 @@ class TicTacToeController
 			$row2 = $board['row2'];
 			$row3 = $board['row3'];
 
-			echo json_encode($row1);
+			echo $row1['column1'];
 
 			return;
 		}
