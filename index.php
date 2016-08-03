@@ -18,11 +18,11 @@ include 'TicTacToeController.php';
 	$query = "SELECT id FROM public.tictactoe WHERE channel_id = 111";
 	$result = pg_query($connection, $query);
 
-	if (!pg_fetch_row($result)) {
-		die('no results foudn');
-	}
+	// if (!pg_fetch_row($result)) {
+	// 	die('no results foudn');
+	// }
 
-	die('there was a result!')
+	// die('there was a result!')
 
 
 	$result = pg_query($connection, "SELECT * FROM public.tictactoe");
