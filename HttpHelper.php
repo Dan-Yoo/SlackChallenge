@@ -33,36 +33,36 @@ class HttpHelper
 	 */
 	public function displayResponse($message, $data, $color = "good")
 	{
-		// $turn = $data['turn'];
-		// $text = "this is my text";
-		// $color = "good";
-		// $row1 = "X O O"; 
-		// $row2 = "X O X";
-		// $row3 = "O X O";
+		$turn = $data['turn'];
+		$text = "this is my text";
+		$color = "good";
+		$row1 = "X O O"; 
+		$row2 = "X O X";
+		$row3 = "O X O";
 
 		// $row1 = $data['r1_c1']." ".$data['r1_c2']." ".$data['r1_c3'];
 		// $row2 = $data['r2_c1']." ".$data['r2_c2']." ".$data['r2_c3'];
 		// $row3 = $data['r3_c1']." ".$data['r3_c2']." ".$data['r3_c3'];
 
-		// $board = array(
-		// 	0 => array("title" => $row1), 
-		// 	1 => array("title" => $row2),
-		// 	2 => array("title" => $row3),
-		// );
-
-		// $response = array(
-		// 	"response_type" => "in_channel",
-		// 	"text" 			=> $message,
-		// 	"attachments" 	=> array(
-		// 		"fields" => $board,
-		// 		"color"  => $color
-		// 	)
-		// );
+		$board = array(
+			0 => array("title" => $row1), 
+			1 => array("title" => $row2),
+			2 => array("title" => $row3),
+		);
 
 		$response = array(
 			"response_type" => "in_channel",
-			"text" 			=> "testing success"
+			"text" 			=> $message,
+			"attachments" 	=> array(
+				"fields" => $board,
+				"color"  => $color
+			)
 		);
+
+		// $response = array(
+		// 	"response_type" => "in_channel",
+		// 	"text" 			=> "testing success"
+		// );
 
 		return json_encode($response);
 	}
