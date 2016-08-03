@@ -104,11 +104,11 @@ class TicTacToeController
 			//echo "------------\n";
 			//echo "------------\n";
 
-			return HttpHelper::displayResponse("This is the current board", $row, "good");
+			echo HttpHelper::displayResponse("This is the current board", $row, "good");
 		}
 
 		//echo "There is currently no games being played in this channel!\n";
-		return HttpHelper::displayResponse("There is no game in this channel", null, "good");;
+		echo HttpHelper::displayResponse("There is no game in this channel", null, "good");;
 	}
 
 	/**
