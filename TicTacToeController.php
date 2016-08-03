@@ -118,16 +118,30 @@ class TicTacToeController
 
 		//check if it actually is the users turn
 		if ($row['turn'] == 1) {
+			$symbol = 'X';
+
 			if ($user != $row['player_1']) {
 				echo "It isn't your turn to play!";
 				die;
 			}
 		} else {
+			$symbol = 'O';
+
 			if ($user != $row['player_2']) {
 				echo "It isn't your turn to play!";
 				die;
 			}
 		}
+		//validate their entry
+		$inputRow	 = substr($command, 4, 5);
+		$inputColumn = substr($command, 5, 6);
+		
+		if (1 <= $inputRow && $inputRow <= 3 && 1 <= $inputColumn && $inputColumn <= 3) {
+			echo "good entry\n";
+		}
+
+
+
 
 		echo "yay im getting this! \n";
 
