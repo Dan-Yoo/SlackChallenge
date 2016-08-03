@@ -133,8 +133,8 @@ class TicTacToeController
 			}
 		}
 		//validate their entry
-		$inputRow	 = substr($command, 4, 5);
-		$inputColumn = substr($command, 5, 6);
+		$inputRow	 = substr($command, 4, 1);
+		$inputColumn = substr($command, 5, 1);
 		
 		if (1 <= $inputRow && $inputRow <= 3 && 1 <= $inputColumn && $inputColumn <= 3) {
 			echo "good entry\n";
