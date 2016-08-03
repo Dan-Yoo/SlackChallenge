@@ -44,15 +44,9 @@ include 'TicTacToeController.php';
 
 	$db->close($GLOBALS['connection']);
 
-	$jsonMsg = {
-	    "response_type": "in_channel",
-	    "text": "It's 80 degrees right now.",
-	    "attachments": [
-	        {
-	            "text":"Partly cloudy today and tomorrow"
-	        }
-	    ]
-	};
-	
-	return $jsonMsg;
+	$array = array(
+		"text" => "HELLO EVERYONE"
+	);
+
+	echo json_encode($array);
 ?>
