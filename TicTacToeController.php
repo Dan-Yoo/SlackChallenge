@@ -64,25 +64,6 @@ class TicTacToeController
 	}
 
 	/**
-	 * @param POST $data
-	 * @return isWinning boolean that returns true if the move was a winning move
-	 * @author d_yoo
-	 */
-	public function playMove($data)
-	{
-		//retrieve turn from table
-		//if turn = $player
-		
-		//$move = explode(",", $data['text']);
-		//$row = $move[0];
-		//$column = $move[1];
-
-		//insert that move into datatable
-
-		//return isWinning($move);
-	}
-
-	/**
 	 * @param array $move
 	 * @return boolean 
 	 * @author d_yoo
@@ -125,34 +106,38 @@ class TicTacToeController
 		return;
 	}
 
-	// public function playMove($connection, $user, $channelId, $command)
-	// {
-	// 	// $query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
-	// 	// $result = pg_query($connection, $query);
-	// 	// $row 	= pg_fetch_array($result, 0, PGSQL_ASSOC);
+	/**
+	 * @return isWinning boolean that returns true if the move was a winning move
+	 * @author d_yoo
+	 */
+	public function playMove($connection, $user, $channelId, $command)
+	{
+		// $query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
+		// $result = pg_query($connection, $query);
+		// $row 	= pg_fetch_array($result, 0, PGSQL_ASSOC);
 
-	// 	// //check if it actually is the users turn
-	// 	// if ($row['turn'] == 1) {
-	// 	// 	if ($user != $row['player_1']) {
-	// 	// 		echo "It isn't your turn to play!";
-	// 	// 		die;
-	// 	// 	}
-	// 	// } else {
-	// 	// 	if ($user != $row['player_2']) {
-	// 	// 		echo "It isn't your turn to play!";
-	// 	// 		die;
-	// 	// 	}
-	// 	// }
+		// //check if it actually is the users turn
+		// if ($row['turn'] == 1) {
+		// 	if ($user != $row['player_1']) {
+		// 		echo "It isn't your turn to play!";
+		// 		die;
+		// 	}
+		// } else {
+		// 	if ($user != $row['player_2']) {
+		// 		echo "It isn't your turn to play!";
+		// 		die;
+		// 	}
+		// }
 
-	// 	echo "yay im getting this! \n";
-
-
-	// 	//change the turn
-
-	// 	//check if win
+		echo "yay im getting this! \n";
 
 
-	// }
+		//change the turn
+
+		//check if win
+
+
+	}
 
 	/**
 	 * Method that removes the game from the datatable
