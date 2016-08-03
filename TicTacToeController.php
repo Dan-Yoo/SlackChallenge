@@ -115,15 +115,18 @@ class TicTacToeController
 
 			$query 	= "SELECT board FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
 			$result = pg_query($connection, $query);
-			$row 	= pg_fetch_array($result);
 
-			$board = json_decode($row[0]['board']);
+			while ($row = pg_fetch_assoc($result)) {
+			  	echo $row['board'];
+			}
 
-			$row1 = $board['row1'];
-			$row2 = $board['row2'];
-			$row3 = $board['row3'];
+			// $board = json_decode($row[0]);
 
-			echo $row1['column1'];
+			// $row1 = $board['row1'];
+			// $row2 = $board['row2'];
+			// $row3 = $board['row3'];
+
+			// echo $row1['column1'];
 
 			return;
 		}
