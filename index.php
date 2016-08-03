@@ -1,5 +1,7 @@
 <?php
 
+header('Content-Type: application/json');
+
 include 'DB_connect.php';
 include 'TicTacToeController.php';
 
