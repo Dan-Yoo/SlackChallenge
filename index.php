@@ -30,9 +30,9 @@ include 'TicTacToeController.php';
 	//check if the user entering command is the dude that has to play next.
 
 	//commands
-	if (substr($command, 0, 4) == 'play') {
+	//if (substr($command, 0, 4) == 'play') {
 		$controller->playMove($GLOBALS['connection'], $user, $channelId, $command);
-	}
+	//}
 
 	if ($command == 'display') {
 		$controller->displayBoard($connection, $channelId);
