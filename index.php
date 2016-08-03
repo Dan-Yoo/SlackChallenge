@@ -43,6 +43,6 @@ include 'TicTacToeController.php';
 
 
 
-	$db->close($GLOBALS['conn']);
+	$db->close($GLOBALS['connection']);
 
 ?>
