@@ -38,11 +38,11 @@ class TicTacToeController
 		// $jsonBoard 	= json_encode($board);
 
 		$row = array(
-			'player_1' => $playerOne,
-			'player_2' => $playerTwo,
-			'channel_id' => $channelId,
-			'turn' => 1,
-			'board' => "{}"
+			'player_1' 		=> $playerOne,
+			'player_2' 		=> $playerTwo,
+			'channel_id' 	=> $channelId,
+			'turn' 			=> 1,
+			'board' 		=> "{}"
 		);
 
 		pg_insert($connection, 'public.tictactoe', $row);

@@ -12,7 +12,7 @@ include 'TicTacToeController.php';
 
 	//verify token from Slack
 	//$controller->verifyToken($token);
-
+	echo $channelId;
 	//connect to database
 	$db = new DB_connect();
 	$GLOBALS['connection'] = $db->connect();
@@ -26,22 +26,6 @@ include 'TicTacToeController.php';
 	}
 
 	echo "There is a board for this channel already";
-	// while ($row = pg_fetch_row($result)) {
-	// 	echo $row[0] . $row[1] . $row[2];
-	// 	echo $row['channel_id'];
-	// 	print_r($row);
-	// }
-	
-	// //initializing phase
-	// $playerOne = $_POST['user_name'];
-	// $playerTwo = $_POST['text'];
-	// $channelId = $_POST['channel_id'];
-
-	// $gameBoard = new GameBoard();
-	// $gameBoard->initialize($playerOne, $playerTwo);
-
-
-
 
 	$db->close($GLOBALS['connection']);
 
