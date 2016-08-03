@@ -19,6 +19,8 @@ include 'TicTacToeController.php';
 
 	if (!$gameExists) {
 		$controller->initializeGame();
+
+		return "OH YES";
 	}
 
 	echo "lalalalalalala";
