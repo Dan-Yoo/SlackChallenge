@@ -13,7 +13,7 @@ class TicTacToeController
 	{
 		echo 'verifying';
 		echo $channelId;
-		$query = "SELECT * FROM public.tictactoe WHERE channel_id = D1X6BJKPS";
+		$query = "SELECT * FROM public.tictactoe WHERE channel_id = 'D1X6BJKPS'";
 		$result = pg_query($connection, $query);
 
 		$row = pg_fetch_array($result);
