@@ -42,7 +42,7 @@ class TicTacToeController
 			'player_2' 		=> $playerTwo,
 			'channel_id' 	=> $channelId,
 			'turn' 			=> 1,
-			'board' 		=> "{}"
+			'board' 		=> $jsonBoard
 		);
 
 		pg_insert($connection, 'public.tictactoe', $row);
