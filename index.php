@@ -16,7 +16,9 @@ include 'GameBoard.php';
 	$result = pg_query($connection, "SELECT * FROM public.tictactoe");
 
 	while ($row = pg_fetch_row($result)) {
-		echo $row[0];
+		echo $row[0] . $row[1] . $row[2];
+		echo $row['channel_id'];
+		print_r($row);
 	}
 	
 	//initializing phase
