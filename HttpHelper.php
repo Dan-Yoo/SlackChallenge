@@ -48,7 +48,7 @@ class HttpHelper
 			$playersTurn = $row['player_2'];
 		}
 
-		$attachmentText = "It is currently " . $playersTurn . "'s turn to play. (" . $row['symbol'] . ")";
+		$attachmentText = "It is currently " . $playersTurn . "'s turn to play";
 
 		$row1 = $data['r1_c1'].$data['r1_c2'].$data['r1_c3'];
 		$row2 = $data['r2_c1'].$data['r2_c2'].$data['r2_c3'];

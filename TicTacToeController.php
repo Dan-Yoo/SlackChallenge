@@ -132,7 +132,7 @@ class TicTacToeController
 		$inputRow	 = substr($command, 4, 1);
 		$inputColumn = substr($command, 5, 1);
 		$inputString = "r" . $inputRow . "_c" . $inputColumn;
-		
+
 		if (1 <= $inputRow && $inputRow <= 3 && 1 <= $inputColumn && $inputColumn <= 3) {
 			//check if the coordinates is empty or not
 			if (!empty($row[$inputString])) {
@@ -151,7 +151,7 @@ class TicTacToeController
 			$result = pg_query($connection, $query);
 			$row 	= pg_fetch_array($result, 0, PGSQL_ASSOC);
 
-			return HttpHelper::displayBoard("Good move!", $row);
+			return HttpHelper::displayBoard("Good move!", $row, "good");
 		}
 	}
 
