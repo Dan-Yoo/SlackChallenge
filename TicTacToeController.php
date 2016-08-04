@@ -27,10 +27,9 @@ class TicTacToeController
 	 */
 	public function verifyExistingGame($connection, $channelId)
 	{
-		$query = "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
+		$query  = "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
 		$result = pg_query($connection, $query);
-
-		$row = pg_fetch_array($result);
+		$row 	= pg_fetch_array($result);
 
 		if (empty($row)) {
 			return false;
@@ -54,8 +53,7 @@ class TicTacToeController
 		//TODO::
 		//validate that player 2 is indeed a user in the current channel
 		//check if playerTwo is in the member list. if yes, get the id. if not return false.
-		$members = HttpHelper::getMembersList();
-		var_dump($members);
+		$members     = HttpHelper::getMembersList();
 		$playerTwoId = $this::getPlayerId($members, $playerTwo);
 
 		if (empty($playerTwoId)) {
@@ -131,13 +129,13 @@ class TicTacToeController
         if (($rowPlayed != 2 && $columnPlayed != 2) || ($rowPlayed == 2 && $columnPlayed == 2)) {
             if ($board['r1_c1'] == $symbol &&
                 $board['r2_c2'] == $symbol &&
-                $board['r3_c3'] == $symbol ) {
+                $board['r3_c3'] == $symbol) {
                 return true;
             }
 
             if ($board['r1_c3'] == $symbol &&
                 $board['r2_c2'] == $symbol &&
-                $board['r3_c1'] == $symbol ) {
+                $board['r3_c1'] == $symbol) {
                 return true;
             }
         }
@@ -158,9 +156,7 @@ class TicTacToeController
 		if ($this::verifyExistingGame($connection, $channelId)) {
 			$query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
 			$result = pg_query($connection, $query);
-
-			$row = pg_fetch_array($result, 0, PGSQL_ASSOC);
-			
+			$row 	= pg_fetch_array($result, 0, PGSQL_ASSOC);
 
 			return HttpHelper::displayResponse("This is the current board", $row, "good");
 		}
