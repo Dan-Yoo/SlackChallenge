@@ -147,11 +147,10 @@ class TicTacToeController
 			$condition 	= array('channel_id' => $channelId);
 			$update 	= pg_update($connection, 'tictactoe', $data, $condition);
 
-			$query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
-			$result = pg_query($connection, $query);
-			$row 	= pg_fetch_array($result, 0, PGSQL_ASSOC);
+			$displayResult = pg_query($connection, $query);
+			$displayRow    = pg_fetch_array($displayResult, 0, PGSQL_ASSOC);
 
-			return HttpHelper::displayBoard("Good move!", $row, "good");
+			return HttpHelper::displayBoard("Good move!", $displayRow, "good");
 		}
 	}
 
