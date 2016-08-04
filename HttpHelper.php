@@ -118,23 +118,23 @@ class HttpHelper
 		return json_encode($response);
 	}
 
-	// public function getSlackMemberList()
-	// {
-	// 	$service_url = 'https://slack.com/api/users.list';
-	//     $curl = curl_init($service_url);
-	//     $curl_post_data = array(
-	//         "token" => "xoxp-65223136695-65215629136-65639990806-3cc2ee911a"
-	//         );
-	//     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-	//     curl_setopt($curl, CURLOPT_POST, true);
-	//     curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data);
-	//     $curl_response = curl_exec($curl);
-	//     curl_close($curl);
+	public function getSlackMemberList()
+	{
+		$service_url = 'https://slack.com/api/users.list';
+	    $curl = curl_init($service_url);
+	    $curl_post_data = array(
+	        "token" => "xoxp-65223136695-65215629136-65639990806-3cc2ee911a"
+	        );
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    curl_setopt($curl, CURLOPT_POST, true);
+	    curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data);
+	    $curl_response = curl_exec($curl);
+	    curl_close($curl);
 
-	//     $data = json_decode($curl_response);
+	    $data = json_decode($curl_response);
 
-	//     return $data;
-	// }
+	    return $data;
+	}
 }
 
 ?>
