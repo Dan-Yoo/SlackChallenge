@@ -174,7 +174,7 @@ class TicTacToeController
 
 			if ($this->isWinning($displayRow, $inputRow, $inputColumn, $symbol)) {
 
-				$this::destroyBoard($channelId);
+				$this::destroyBoard($connection, $channelId);
 
 
 				$winMessage =  $user . " has won!";
@@ -192,9 +192,9 @@ class TicTacToeController
 	 * @param int $channelId
 	 * @author d_yoo
 	 */
-	public function destroyBoard($channelId)
+	public function destroyBoard($connection, $channelId)
 	{
-		//query to remove row of channelid given
+		pg_delete($connection, 'tictactoe', ["channel_id" => $channelId]);
 	}
 }
 
