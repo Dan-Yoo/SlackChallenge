@@ -147,11 +147,10 @@ class TicTacToeController
 			$condition 	= array('channel_id' => $channelId);
 			$update 	= pg_update($connection, 'tictactoe', $data, $condition);
 
-			echo "checkpoint1";
 			$displayResult = pg_query($connection, $query);
 			$displayRow    = pg_fetch_array($displayResult, 0, PGSQL_ASSOC);
-			echo "checkpoint2";
-			return HttpHelper::displayBoard("Good move!", $displayRow, "good");
+
+			return HttpHelper::displayBoard("Good move!", $row, "good");
 		}
 	}
 
