@@ -176,7 +176,8 @@ class TicTacToeController
 
 				$this::destroyBoard($channelId);
 
-				$winMessage = $GLOBALS_['user'] . " has won!";
+
+				$winMessage =  $user . " has won!";
 
 				return HttpHelper::displayResponse($winMessage, $displayRow, "good", false);
 			}
