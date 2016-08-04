@@ -144,7 +144,7 @@ class HttpHelper
 
 	    $data = json_decode($curl_response, true);
 
-	    $memberIds = $data['channel']['members']);
+	    $memberIds = $data['channel']['members'];
 
 		return $memberIds;
 	}
