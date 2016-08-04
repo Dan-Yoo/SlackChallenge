@@ -68,28 +68,29 @@ class HttpHelper
 			)
 		);
 
-		$response = array(
-			"reponse_type"	=> "in_channel",
-			"text"			=> $message
-		);
+		// $response = array(
+		// 	"reponse_type"	=> "in_channel",
+		// 	"text"			=> $message,
+		// 	"attachments" 	=> $attachment
+		// );
 
 			// 0 => array("text" 	=> $attachmentText),
 			// 1 => array("fields" => $board),
 			// 2 => array("color" 	=> $color)
-		// $response = array(
-		// 	"reponse_type"	=> "in_channel",
-		// 	"text"			=> $message,
-		// 	"attachments" 	=> array(
-		// 		array(
-		// 			"fields" => array(
-		// 				0 => array("title" => $row1),
-		// 				1 => array("title" => $row2),
-		// 				2 => array("title" => $row3)
-		// 			),
-		// 			"color" => "good"
-		// 		)
-		// 	)
-		// );
+		$response = array(
+			"reponse_type"	=> "in_channel",
+			"text"			=> $message,
+			"attachments" 	=> array(
+				array(
+					"fields" => array(
+						0 => array("title" => $row1),
+						1 => array("title" => $row2),
+						2 => array("title" => $row3)
+					),
+					"color" => "good"
+				)
+			)
+		);
 
 		return json_encode($response);
 	}
