@@ -4,7 +4,7 @@ include 'HttpHelper.php';
 
 class TicTacToeController
 {
-	$APItoken = "xoxp-65223136695-65215629136-66078478947-f3ce9e090a";
+	//$APItoken = "xoxp-65223136695-65215629136-66078478947-f3ce9e090a";
 
 	/**
 	 * Verifies Slack token
