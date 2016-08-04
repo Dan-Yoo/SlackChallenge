@@ -173,9 +173,12 @@ class TicTacToeController
 			$displayRow    = pg_fetch_array($displayResult, 0, PGSQL_ASSOC);
 
 			if ($this->isWinning($displayRow, $inputRow, $inputColumn, $symbol)) {
-				
+
 				$this::destroyBoard($channelId);
-				return HttpHelper::displayResponse("YOU WON", $displayRow, "good");
+
+				$winMessage = $GLOBALS_['user'] . " has won!";
+
+				return HttpHelper::displayResponse($winMessage, $displayRow, "good", false);
 			}
 
 			return HttpHelper::displayResponse("Good move!", $displayRow, "good");

@@ -13,6 +13,7 @@ include 'TicTacToeController.php';
 	$token 		= $_POST['token'];
 	$channelId 	= $_POST['channel_id'];
 	$playerOne	= $_POST['user_name'];
+	$GLOBALS['user'] = $_POST['user_name'];
 	$command	= $_POST['text'];
 
 	//verify token from Slack
