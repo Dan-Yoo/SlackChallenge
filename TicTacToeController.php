@@ -58,13 +58,13 @@ class TicTacToeController
 		$members = HttpHelper::getMembersList();
 		$playerTwoId = $this::getPlayerId($members, $playerTwo)
 
-		if (empty($playerTwoId)) {
-			return HttpHelper::genericResponse("There is no such user in this channel!");
-		}
+		// if (empty($playerTwoId)) {
+		// 	return HttpHelper::genericResponse("There is no such user in this channel!");
+		// }
 
-		if (!$this::validatePlayerIsInChannel($playerTwoId)) {
-			return HttpHelper::genericResponse("There is no such user in this channel!");
-		}
+		// if (!$this::validatePlayerIsInChannel($playerTwoId)) {
+		// 	return HttpHelper::genericResponse("There is no such user in this channel!");
+		// }
 
 		$row = array(
 			'player_1' 		=> $playerOne,
