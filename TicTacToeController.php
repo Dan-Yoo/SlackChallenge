@@ -43,13 +43,18 @@ class TicTacToeController
 	/**
 	 * Initializes a tic-tac-toe game for the channel
      *
-	 * @param POST $data
+	 * @param $connection
+	 * @param string $playerOne
+	 * @param string $playerTwo
+	 * @param string $channelId
+	 * @return HttpHelper::gameStartResponse
 	 * @author d_yoo
 	 */
 	public function initializeGame($connection, $playerOne, $playerTwo, $channelId)
 	{
 		//TODO::
 		//validate that player 2 is indeed a user in the current channel
+		var_dump(HttpHelper::getSlackMemberList());
 
 		$row = array(
 			'player_1' 		=> $playerOne,
@@ -70,6 +75,8 @@ class TicTacToeController
 	 * @param string $rowPlayed
 	 * @param string $columnPlayed
 	 * @param char $symbol
+	 * @return boolean
+	 * @author d_yoo
 	 */
 	public function isWinning($board, $rowPlayed, $columnPlayed, $symbol)
 	{
@@ -105,9 +112,11 @@ class TicTacToeController
 	}
 
 	/**
-	 * 
-     *
-	 * @return string that is displayed for users to visualize the current board
+	 * Displays the board state
+	 *
+	 * @param $connection
+     * @param $channelId
+	 * @return HttpHelper::displayResponse
 	 * @author d_yoo
 	 */
 	public function displayBoard($connection, $channelId)
@@ -126,7 +135,13 @@ class TicTacToeController
 	}
 
 	/**
-	 * @return isWinning boolean that returns true if the move was a winning move
+	 * Inserts the users move into db and displays message accordingly
+	 *
+	 * @param $connection
+	 * @param string $user
+	 * @param string $channelId
+	 * @param string $command
+	 * @return HttpHelper::genericResponse()
 	 * @author d_yoo
 	 */
 	public function playMove($connection, $user, $channelId, $command)
@@ -189,6 +204,7 @@ class TicTacToeController
 	/**
 	 * Method that removes the game from the datatable
 	 *
+	 * @param $connection
 	 * @param int $channelId
 	 * @author d_yoo
 	 */
