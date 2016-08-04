@@ -4,8 +4,6 @@ include 'HttpHelper.php';
 
 class TicTacToeController
 {
-	public $APItoken = "xoxp-65223136695-65215629136-66078478947-f3ce9e090a";
-
 	/**
 	 * Verifies Slack token
 	 *
@@ -56,7 +54,7 @@ class TicTacToeController
 		//TODO::
 		//validate that player 2 is indeed a user in the current channel
 		//check if playerTwo is in the member list. if yes, get the id. if not return false.
-		$members = HttpHelper::getMembersList($APItoken);
+		$members = HttpHelper::getMembersList();
 		var_dump($members);
 		$playerTwoId = $this::getPlayerId($members, $playerTwo);
 
@@ -82,18 +80,18 @@ class TicTacToeController
 
 	public function getPlayerId($members, $playerName)
 	{
-		// foreach ($members as $member) {
-		// 	if ($member['name'] == $playerName) {
-		// 		return $member['id'];
-		// 	}
-		// }
-		return "lalalala";
-		// return '';
+		foreach ($members as $member) {
+			if ($member['name'] == $playerName) {
+				return $member['id'];
+			}
+		}
+		
+		return '';
 	}
 
 	// public function validatePlayerIsInChannel($playerId, $channelId)
 	// {
-	// 	$memberIds = HttpHelper::getMembersInChannel($APItoken, $channelId);
+	// 	$memberIds = HttpHelper::getMembersInChannel($channelId);
 
 	// 	foreach ($memberIds as $memberId) {
 	// 		if ($memberId == $playerId) {

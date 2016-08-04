@@ -124,13 +124,13 @@ class HttpHelper
 	 * @return array $memberIds
 	 * @author d_yoo
 	 */
-	// public function getMembersInChannel($token, $channelId)
+	// public function getMembersInChannel($channelId)
 	// {
 	// 	$service_url = 'https://slack.com/api/channels.info';
 	//     $curl = curl_init($service_url);
 	   
 	//     $curl_post_data = array(
-	//         'token' => $token,
+	//         'token' => "xoxp-65223136695-65215629136-66078478947-f3ce9e090a",
 	//         'channel' => $channelId
 	//     );
 	//     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -155,7 +155,7 @@ class HttpHelper
 	 * @return array $members
 	 * @author d_yoo
 	 */
-	public function getMembersList($token)
+	public function getMembersList()
 	{
 		$service_url = 'https://slack.com/api/users.list';
 	    $curl = curl_init($service_url);
