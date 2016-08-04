@@ -56,7 +56,7 @@ class TicTacToeController
 		//TODO::
 		//validate that player 2 is indeed a user in the current channel
 		//check if playerTwo is in the member list. if yes, get the id. if not return false.
-		$members = HttpHelper::getMembersList($token);
+		$members = HttpHelper::getMembersList($APItoken);
 		$playerTwoId = $this::getPlayerId($members, $playerTwo);
 
 		if (empty($playerTwoId)) {
@@ -90,18 +90,18 @@ class TicTacToeController
 		return '';
 	}
 
-	public function validatePlayerIsInChannel($playerId, $channelId)
-	{
-		$memberIds = HttpHelper::getMembersInChannel($token, $channelId);
+	// public function validatePlayerIsInChannel($playerId, $channelId)
+	// {
+	// 	$memberIds = HttpHelper::getMembersInChannel($APItoken, $channelId);
 
-		foreach ($memberIds as $memberId) {
-			if ($memberId == $playerId) {
-				return true;
-			}
-		}
+	// 	foreach ($memberIds as $memberId) {
+	// 		if ($memberId == $playerId) {
+	// 			return true;
+	// 		}
+	// 	}
 
-		return false;
-	}
+	// 	return false;
+	// }
 
 	/**
 	 * Given the board, checks if the move caused a winning move
