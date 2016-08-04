@@ -150,7 +150,7 @@ class TicTacToeController
 			$displayResult = pg_query($connection, $query);
 			$displayRow    = pg_fetch_array($displayResult, 0, PGSQL_ASSOC);
 
-			return HttpHelper::displayBoard("Good move!", $row, "good");
+			return HttpHelper::displayResponse("Good move!", $displayRow, "good");
 		}
 	}
 
