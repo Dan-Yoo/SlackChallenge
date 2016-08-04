@@ -6,6 +6,8 @@ include 'DB_connect.php';
 include 'TicTacToeController.php';
 
 	//connect to database
+	print_r($_POST);
+
 	$db = new DB_connect();
 	$GLOBALS['connection'] = $db->connect();
 

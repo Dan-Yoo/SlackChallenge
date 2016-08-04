@@ -53,12 +53,12 @@ class TicTacToeController
 		//TODO::
 		//validate that player 2 is indeed a user in the current channel
 		//check if playerTwo is in the member list. if yes, get the id. if not return false.
-		$members     = HttpHelper::getMembersList();
-		$playerTwoId = $this::getPlayerId($members, $playerTwo);
+		// $members     = HttpHelper::getMembersList();
+		// $playerTwoId = $this::getPlayerId($members, $playerTwo);
 		
-		if (empty($playerTwoId)) {
-			return HttpHelper::genericResponse("There is no such user in this channel!");
-		}
+		// if (empty($playerTwoId)) {
+		// 	return HttpHelper::genericResponse("There is no such user in this channel!");
+		// }
 
 		// if (!$this::validatePlayerIsInChannel($playerTwoId, $channelId)) {
 		// 	return HttpHelper::genericResponse("There is no such user in this channel!");
