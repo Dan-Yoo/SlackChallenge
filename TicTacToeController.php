@@ -14,7 +14,7 @@ class TicTacToeController
 	public function verifyToken($token)
 	{
 		if ($token != 'tywWH21kkZOVWWB7tGQLbbzc') {
-			die("What are you doing here >:( I only accept requests from Slack!");
+			die("What are you doing here >:( You need permission!");
 		}
 	}
 
@@ -157,7 +157,8 @@ class TicTacToeController
 		$inputString = "r" . $inputRow . "_c" . $inputColumn;
 
 		if (1 <= $inputRow && $inputRow <= 3 && 1 <= $inputColumn && $inputColumn <= 3) {
-			//check if the coordinates is empty or not
+
+			//check if the coordinates is a playable spot or not
 			if (!empty($row[$inputString])) {
 				return HttpHelper::genericResponse("This spot was already played on!");
 			}
@@ -172,6 +173,8 @@ class TicTacToeController
 			$displayRow    = pg_fetch_array($displayResult, 0, PGSQL_ASSOC);
 
 			if ($this->isWinning($displayRow, $inputRow, $inputColumn, $symbol)) {
+				
+				$this::destroyBoard($channelId);
 				return HttpHelper::displayResponse("YOU WON", $displayRow, "good");
 			}
 

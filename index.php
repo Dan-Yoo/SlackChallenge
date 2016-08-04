@@ -16,7 +16,7 @@ include 'TicTacToeController.php';
 	$command	= $_POST['text'];
 
 	//verify token from Slack
-	$controller->verifyToken($token);
+	//$controller->verifyToken($token);
 
 	//displays command descriptions to the user
 	if ($command == '!help') {
