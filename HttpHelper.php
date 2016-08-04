@@ -43,9 +43,9 @@ class HttpHelper
 		$color = "good";
 
 		if ($turn == 1) {
-			$playersTurn = $row['player_1'];
+			$playersTurn = $data['player_1'];
 		} else {
-			$playersTurn = $row['player_2'];
+			$playersTurn = $data['player_2'];
 		}
 
 		$attachmentText = "It is currently " . $playersTurn . "'s turn to play";
