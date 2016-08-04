@@ -57,6 +57,7 @@ class TicTacToeController
 		//validate that player 2 is indeed a user in the current channel
 		//check if playerTwo is in the member list. if yes, get the id. if not return false.
 		$members = HttpHelper::getMembersList($APItoken);
+		var_dump($members);
 		$playerTwoId = $this::getPlayerId($members, $playerTwo);
 
 		if (empty($playerTwoId)) {
