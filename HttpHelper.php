@@ -63,13 +63,13 @@ class HttpHelper
 		$attachment = array (
 			array(
 				"fields" 	=> $board,
-				"color" 	=> $color
+				"color" 	=> $color,
+				"text"		=> $message
 			)
 		);
 
 		$response = array(
 			"reponse_type"	=> "in_channel",
-			"text"			=> $message,
 			"attachments" 	=> $attachment
 		);
 
