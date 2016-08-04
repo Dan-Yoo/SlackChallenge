@@ -123,30 +123,30 @@ class HttpHelper
 	 * @return array $memberIds
 	 * @author d_yoo
 	 */
-	// public function getMembersInChannel($channelId)
-	// {
-	// 	$service_url = 'https://slack.com/api/channels.info';
-	//     $curl = curl_init($service_url);
+	public function getMembersInChannel($channelId)
+	{
+		$service_url = 'https://slack.com/api/channels.info';
+	    $curl = curl_init($service_url);
 	   
-	//     $curl_post_data = array(
-	//         'token' => "xoxp-65223136695-65215629136-66078478947-f3ce9e090a",
-	//         'channel' => $channelId
-	//     );
-	//     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-	//     curl_setopt($curl, CURLOPT_POST, true);
-	//     curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data);
-	// 	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-	// 	curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+	    $curl_post_data = array(
+	        'token'   => "xoxp-65223136695-65215629136-66078478947-f3ce9e090a",
+	        'channel' => $channelId
+	    );
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    curl_setopt($curl, CURLOPT_POST, true);
+	    curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
 
-	//     $curl_response = curl_exec($curl);
-	//     curl_close($curl);
+	    $curl_response = curl_exec($curl);
+	    curl_close($curl);
 
-	//     $data = json_decode($curl_response, true);
+	    $data = json_decode($curl_response, true);
 
-	//     $memberIds = $data['channel']['members'];
+	    $memberIds = $data['channel']['members'];
 
-	// 	return $memberIds;
-	// }
+		return $memberIds;
+	}
 
 	/**
 	 * Get the list of member

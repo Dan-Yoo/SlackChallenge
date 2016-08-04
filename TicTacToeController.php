@@ -87,18 +87,18 @@ class TicTacToeController
 		return '';
 	}
 
-	// public function validatePlayerIsInChannel($playerId, $channelId)
-	// {
-	// 	$memberIds = HttpHelper::getMembersInChannel($channelId);
+	public function validatePlayerIsInChannel($playerId, $channelId)
+	{
+		$memberIds = HttpHelper::getMembersInChannel($channelId);
 
-	// 	foreach ($memberIds as $memberId) {
-	// 		if ($memberId == $playerId) {
-	// 			return true;
-	// 		}
-	// 	}
+		foreach ($memberIds as $memberId) {
+			if ($memberId == $playerId) {
+				return true;
+			}
+		}
 
-	// 	return false;
-	// }
+		return false;
+	}
 
 	/**
 	 * Given the board, checks if the move caused a winning move

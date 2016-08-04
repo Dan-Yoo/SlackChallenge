@@ -24,8 +24,6 @@ include 'TicTacToeController.php';
 		echo HttpHelper::genericResponse($message);
 		return true;
 	}
-	
-	//$gameExists = $controller->verifyExistingGame($GLOBALS['connection'], $channelId);
 
 	//verifies if a game is currently being played on the users channel
 	if (!$controller->verifyExistingGame($GLOBALS['connection'], $channelId)) {
