@@ -64,25 +64,9 @@ class HttpHelper
 			array(
 				"fields" 	=> $board,
 				"color" 	=> $color,
-				"text"		=> $message
+				"text"		=> $attachmentText
 			)
 		);
-
-		// $response = array(
-		// 	"reponse_type"	=> "in_channel",
-		// 	"text"			=> $message,
-		// 	"attachments" 	=> array(
-		// 		array(
-		// 			"text" => $attachmentText,
-		// 			"fields" => array(
-		// 				0 => array("title" => $row1),
-		// 				1 => array("title" => $row2),
-		// 				2 => array("title" => $row3)
-		// 			),
-		// 			"color" => $color
-		// 		)
-		// 	)
-		// );
 
 		$response = array(
 			"response_type" => "in_channel",
