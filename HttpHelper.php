@@ -70,8 +70,7 @@ class HttpHelper
 
 		$response = array(
 			"reponse_type"	=> "in_channel",
-			"text"			=> $message,
-			"attachments" 	=> $attachment
+			"text"			=> $message
 		);
 
 			// 0 => array("text" 	=> $attachmentText),
