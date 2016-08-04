@@ -81,13 +81,13 @@ class TicTacToeController
 
 	public function getPlayerId($members, $playerName)
 	{
-		foreach ($members as $member) {
-			if ($member['name'] == $playerName) {
-				return $member['id'];
-			}
-		}
-
-		return '';
+		// foreach ($members as $member) {
+		// 	if ($member['name'] == $playerName) {
+		// 		return $member['id'];
+		// 	}
+		// }
+		return "lalalala";
+		// return '';
 	}
 
 	// public function validatePlayerIsInChannel($playerId, $channelId)
