@@ -124,14 +124,14 @@ class HttpHelper
 	 * @return array $memberIds
 	 * @author d_yoo
 	 */
-	public function getMembersInChannel($channelId)
+	public function getMembersInChannel($token, $channelId)
 	{
 		$service_url = 'https://slack.com/api/channels.info';
 	    $curl = curl_init($service_url);
 	   
 	    $curl_post_data = array(
-	        'token' => "xoxp-65223136695-65215629136-66078478947-f3ce9e090a",
-	        'channel' => "C1X6BJM3J"
+	        'token' => $token,
+	        'channel' => $channelId
 	    );
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    curl_setopt($curl, CURLOPT_POST, true);
@@ -155,13 +155,13 @@ class HttpHelper
 	 * @return array $members
 	 * @author d_yoo
 	 */
-	public function getMembersList()
+	public function getMembersList($token)
 	{
 		$service_url = 'https://slack.com/api/users.list';
 	    $curl = curl_init($service_url);
 	   
 	    $curl_post_data = array(
-	        'token' => "xoxp-65223136695-65215629136-66078478947-f3ce9e090a"
+	        'token' => $token
 	    );
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    curl_setopt($curl, CURLOPT_POST, true);
