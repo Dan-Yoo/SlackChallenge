@@ -160,7 +160,7 @@ class HttpHelper
 	    $curl = curl_init($service_url);
 	   
 	    $curl_post_data = array(
-	        'token' => "xoxp-65223136695-65215629136-66078478947-f3ce9e090a"
+	        'token' => "xoxp-65223136695-65215629136-66078478947-f3ce9e090a";
 	    );
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    curl_setopt($curl, CURLOPT_POST, true);
