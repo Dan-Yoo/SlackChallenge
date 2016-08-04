@@ -69,16 +69,44 @@ class TicTacToeController
 	}
 
 	/**
-	 * @param array $move
-	 * @return boolean 
-	 * @author d_yoo
+	 * Given the board, checks if the move caused a winning move
+	 *
+	 * @param array $board row date from the db table
+	 * @param string $rowPlayed
+	 * @param string $columnPlayed
+	 * @param char $symbol
 	 */
-	public function isWinning($move)
+	public function isWinning($board, $rowPlayed, $columnPlayed, $symbol)
 	{
-		//check database board
-		//if win , echo out winning msg and remove row from table
-		//if not, switch turn.
-		return false;
+        if ($board["r" . $rowPlayed . "_c1"] == $symbol &&
+            $board["r" . $rowPlayed . "_c2"] == $symbol &&
+            $board["r" . $rowPlayed . "_c3"] == $symbol) {
+            return true;
+        }
+
+        if ($board["r1_c" . $columnPlayed] == $symbol &&
+            $board["r2_c" . $columnPlayed] == $symbol &&
+            $board["r3_c" . $columnPlayed] == $symbol) {
+            return true;
+        }
+
+        //check diagonals if coordinates were 
+        // 11 13 31 33 22
+        if (($rowPlayed != 2 && $columnPlayed != 2) || ($rowPlayed == 2 && $columnPlayed == 2)) {
+            if ($board['r1_c1'] == $symbol &&
+                $board['r2_c2'] == $symbol &&
+                $board['r3_c3'] == $symbol ) {
+                return true;
+            }
+
+            if ($board['r1_c3'] == $symbol &&
+                $board['r2_c2'] == $symbol &&
+                $board['r3_c1'] == $symbol ) {
+                return true;
+            }
+        }
+
+        return false;
 	}
 
 	/**
@@ -139,8 +167,6 @@ class TicTacToeController
 				return HttpHelper::genericResponse("This spot was already played on!");
 			}
 
-			//check if this will cause a winning move
-			//$this->isWinning();
 
 			//insert into the table.
 			$data 		= array('turn' => $turn, $inputString => $symbol);
@@ -149,6 +175,10 @@ class TicTacToeController
 
 			$displayResult = pg_query($connection, $query);
 			$displayRow    = pg_fetch_array($displayResult, 0, PGSQL_ASSOC);
+
+			if ($this->isWinning($displayRow, $inputRow, $inputColumn, $symbol)) {
+				return HttpHelper::genericResponse("YOU WON");
+			}
 
 			return HttpHelper::displayResponse("Good move!", $displayRow, "good");
 		}
