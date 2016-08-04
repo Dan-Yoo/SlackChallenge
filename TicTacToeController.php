@@ -54,7 +54,17 @@ class TicTacToeController
 	{
 		//TODO::
 		//validate that player 2 is indeed a user in the current channel
-		//var_dump(HttpHelper::getSlackMemberList());
+		//check if playerTwo is in the member list. if yes, get the id. if not return false.
+		$members = HttpHelper::getMembersList();
+		$playerTwoId = $this::getPlayerId($members, $playerTwo)
+
+		if (empty($playerTwoId)) {
+			return HttpHelper::genericResponse("There is no such user in this channel!");
+		}
+
+		if (!$this::validatePlayerIsInChannel($playerTwoId)) {
+			return HttpHelper::genericResponse("There is no such user in this channel!");
+		}
 
 		$row = array(
 			'player_1' 		=> $playerOne,
@@ -66,6 +76,30 @@ class TicTacToeController
 		pg_insert($connection, 'public.tictactoe', $row);
 
 		return HttpHelper::gameStartResponse($playerOne, $playerTwo);
+	}
+
+	public function getPlayerId($members, $playerName)
+	{
+		foreach ($members as $member) {
+			if ($member['name'] == $playerName) {
+				return $member['id'];
+			}
+		}
+
+		return '';
+	}
+
+	public function validatePlayerIsInChannel($playerId)
+	{
+		$memberIds = HttpHelper::getMembersInChannel();
+
+		foreach ($memberIds as $memberId) {
+			if ($memberId == $playerId) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
