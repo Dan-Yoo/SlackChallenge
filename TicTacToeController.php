@@ -54,7 +54,7 @@ class TicTacToeController
 	{
 		//TODO::
 		//validate that player 2 is indeed a user in the current channel
-		var_dump(HttpHelper::getSlackMemberList());
+		//var_dump(HttpHelper::getSlackMemberList());
 
 		$row = array(
 			'player_1' 		=> $playerOne,
