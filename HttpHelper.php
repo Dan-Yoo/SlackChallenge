@@ -63,7 +63,7 @@ class HttpHelper
 		$attachment = array (
 			0 => array("text" 	=> $attachmentText),
 			1 => array("fields" => $board),
-			2 => array("color" 	=> $color)
+			2 => "color" 		=> $color
 		);
 
 		$response = array(
@@ -109,68 +109,6 @@ class HttpHelper
 		);
 
 		return json_encode($response);
-	}
-
-	/**
-	 * Given the board, checks if the move caused a winning move
-	 *
-	 * @param array $board row date from the db table
-	 * @param string $rowPlayed
-	 * @param string $columnPlayed
-	 * @param char $symbol
-	 */
-	public function isWinning($board, $rowPlayed, $columnPlayed, $symbol)
-	{
-		$symbol = 'X';
-        $rowPlayed = 3;
-        $columnPlayed = 1;
-
-        $board = array(
-            "r1_c1" => "",
-            "r1_c2" => "",
-            "r1_c3" => "",
-            "r2_c1" => "",
-            "r2_c2" => "X",
-            "r2_c3" => "",
-            "r3_c1" => "",
-            "r3_c2" => "",
-            "r3_c3" => "X"
-        );
-
-        if ($board["r" . $rowPlayed . "_c1"] == $symbol &&
-            $board["r" . $rowPlayed . "_c2"] == $symbol &&
-            $board["r" . $rowPlayed . "_c3"] == $symbol) {
-            dd("winning row");
-            return true;
-        }
-
-        if ($board["r1_c" . $columnPlayed] == $symbol &&
-            $board["r2_c" . $columnPlayed] == $symbol &&
-            $board["r3_c" . $columnPlayed] == $symbol) {
-            dd("winning column");
-            return true;
-        }
-
-        //check diagonals if coordinates were 
-        // 11 13 31 33 22
-        if (($rowPlayed != 2 && $columnPlayed != 2) || ($rowPlayed == 2 && $columnPlayed == 2)) {
-            if ($board['r1_c1'] == $symbol &&
-                $board['r2_c2'] == $symbol &&
-                $board['r3_c3'] == $symbol ) {
-                dd('winning diagonal 1');
-                return true;
-            }
-
-            if ($board['r1_c3'] == $symbol &&
-                $board['r2_c2'] == $symbol &&
-                $board['r3_c1'] == $symbol ) {
-                dd('winning diagonal 2');
-                return true;
-            }
-        }
-
-        dd("not winning move");
-        return false;
 	}
 }
 

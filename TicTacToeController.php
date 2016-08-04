@@ -60,11 +60,6 @@ class TicTacToeController
 
 		pg_insert($connection, 'public.tictactoe', $row);
 
-		// echo "Tic-Tac-Toe game has begun!\n";
-		// echo $playerOne . " VS " . $playerTwo;
-		// echo "\n";
-
-		//D1X6BJKPS
 		return HttpHelper::gameStartResponse($playerOne, $playerTwo);
 	}
 
@@ -177,7 +172,7 @@ class TicTacToeController
 			$displayRow    = pg_fetch_array($displayResult, 0, PGSQL_ASSOC);
 
 			if ($this->isWinning($displayRow, $inputRow, $inputColumn, $symbol)) {
-				return HttpHelper::genericResponse("YOU WON");
+				return HttpHelper::displayResponse("YOU WON", $displayRow, "good");
 			}
 
 			return HttpHelper::displayResponse("Good move!", $displayRow, "good");
