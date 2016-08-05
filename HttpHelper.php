@@ -196,10 +196,10 @@ class HttpHelper
 		for ($x = 0; $x < 3; $x++) {
 		   for ($y = 0; $y < 3; $y++) {
 		   		switch ($data[$arrayCount]) {
-				    case "X":
+				    case 'X':
 				        $copy = $image_X;
 				        break;
-				    case "O":
+				    case 'O':
 				        $copy = $image_O;
 				        break;
 				    default:
@@ -207,6 +207,7 @@ class HttpHelper
 				}
 
 				imagecopy($image, $copy, $y * $size, $x * $size, 0, 0, $size, $size);
+				
 				$arrayCount++;
 		   }
 		} 

@@ -5,6 +5,27 @@ header('Content-Type: application/json');
 include 'DB_connect.php';
 include 'TicTacToeController.php';
 
+	$data = array(
+	0 => "",
+	1 => "",
+	2 => "",
+	3 => "",
+	4 => "LALALA",
+	5 => "X",
+	6 => "O",
+	7 => "X",
+	8 => "",
+	9 => "",
+	10=> "X",
+	11=> "",
+	12=> "",
+	13=> "O",
+);
+
+
+	HttpHelper::makeImage($data);
+
+/**
 	//connect to database
 	$db = new DB_connect();
 	$GLOBALS['connection'] = $db->connect();
@@ -46,4 +67,6 @@ include 'TicTacToeController.php';
 	$db->close($GLOBALS['connection']);
 
 	echo HttpHelper::genericResponse("Invalid command. A game is currently in progress!");
+
+	**/
 ?>
