@@ -237,16 +237,17 @@ class TicTacToeController
 
 			//check if this was a winning move. if yes, delete the row, print message
 			if ($this->isWinning($displayRow, $inputRow, $inputColumn, $symbol)) {
-
 				$this::destroyBoard($connection, $channelId);
-
 
 				$winMessage =  $user . " has won!";
 
 				return HttpHelper::displayResponse($winMessage, $displayRow, "good", false);
 			}
 
+			//checks if it is a tie
 			if ($this->isTie($displayRow)) {
+				$this::destroyBoard($connection, $channelId);
+
 				$tieMessage = "Game has ended as a tie! Good game!";
 
 				return HttpHelper::displayResponse($tieMessage, $displayRow, "good", false);
