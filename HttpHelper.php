@@ -67,6 +67,7 @@ class HttpHelper
 
 		$attachment = array (
 			array(
+				"image_url"		=> "http://hearstcommerce.ca/customcontent/members/premium/sample.jpg",
 				"fields" 	=> $board,
 				"color" 	=> $color,
 				"text"		=> $message . "\n" . $attachmentText
@@ -74,7 +75,6 @@ class HttpHelper
 		);
 
 		$response = array(
-			"image_url"		=> "http://hearstcommerce.ca/customcontent/members/premium/sample.jpg",
 			"response_type" => "in_channel",
 			"attachments" 	=> $attachment
 		);
