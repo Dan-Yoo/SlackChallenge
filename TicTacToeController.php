@@ -182,14 +182,14 @@ class TicTacToeController
 
 		//check if it actually is the users turn
 		if ($row['turn'] == 1) {
-			$symbol = "X";
+			$symbol = "x";
 			$turn 	= 2;
 
 			if ($user != $row['player_1']) {
 				return HttpHelper::genericResponse("It isn't your turn to play!");
 			}
 		} else {
-			$symbol = "O";
+			$symbol = "o";
 			$turn 	= 1;	
 
 			if ($user != $row['player_2']) {

@@ -66,7 +66,7 @@ class HttpHelper
 		);
 
 		//make the board to display
-		$this::makeImage($data);
+		//$this::makeImage($data);
 
 		$attachment = array (
 			array(
@@ -182,45 +182,45 @@ class HttpHelper
 		// return $members;
 	}
 
-	public function makeImage(array $data, $size = 90)
-	{
-		$image = imagecreatetruecolor(3 * $size, 3 * $size);
+	// public function makeImage(array $data, $size = 90)
+	// {
+	// 	$image = imagecreatetruecolor(3 * $size, 3 * $size);
 
-		 // Load images and then copy to destination image
-		$image_O 	 = imagecreatefromjpeg("o.jpg");
-		$image_X 	 = imagecreatefromjpeg("x.jpg");
-		$image_Blank = imagecreatefromjpeg("blank.jpg");
+	// 	 // Load images and then copy to destination image
+	// 	$image_O 	 = imagecreatefromjpeg("o.jpg");
+	// 	$image_X 	 = imagecreatefromjpeg("x.jpg");
+	// 	$image_Blank = imagecreatefromjpeg("blank.jpg");
 
-		$arrayCount = 5; 
+	// 	$arrayCount = 5; 
 
-		for ($x = 0; $x < 3; $x++) {
-		   for ($y = 0; $y < 3; $y++) {
-		   		switch ($data[$arrayCount]) {
-				    case 'X':
-				        $copy = $image_X;
-				        break;
-				    case 'O':
-				        $copy = $image_O;
-				        break;
-				    default:
-				        $copy = $image_Blank;
-				}
+	// 	for ($x = 0; $x < 3; $x++) {
+	// 	   for ($y = 0; $y < 3; $y++) {
+	// 	   		switch ($data[$arrayCount]) {
+	// 			    case 'X':
+	// 			        $copy = $image_X;
+	// 			        break;
+	// 			    case 'O':
+	// 			        $copy = $image_O;
+	// 			        break;
+	// 			    default:
+	// 			        $copy = $image_Blank;
+	// 			}
 
-				imagecopy($image, $copy, $y * $size, $x * $size, 0, 0, $size, $size);
+	// 			imagecopy($image, $copy, $y * $size, $x * $size, 0, 0, $size, $size);
 				
-				$arrayCount++;
-		   }
-		} 
+	// 			$arrayCount++;
+	// 	   }
+	// 	} 
 
-		// Save the resulting image to disk (as JPEG)
-		imagejpeg($image, "merged.jpg");
+	// 	// Save the resulting image to disk (as JPEG)
+	// 	imagejpeg($image, "merged.jpg");
 
-		// Clean up
-		imagedestroy($image);
-		imagedestroy($image_Blank);
-		imagedestroy($image_X);
-		imagedestroy($image_O);
-	}
+	// 	// Clean up
+	// 	imagedestroy($image);
+	// 	imagedestroy($image_Blank);
+	// 	imagedestroy($image_X);
+	// 	imagedestroy($image_O);
+	// }
 }
 
 ?>
