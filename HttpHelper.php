@@ -74,6 +74,7 @@ class HttpHelper
 		);
 
 		$response = array(
+			"image_url": "ttt.png",
 			"response_type" => "in_channel",
 			"attachments" 	=> $attachment
 		);
