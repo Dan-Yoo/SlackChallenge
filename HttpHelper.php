@@ -67,7 +67,7 @@ class HttpHelper
 
 		$attachment = array (
 			array(
-				"image_url"		=> "http://hearstcommerce.ca/customcontent/members/premium/sample.jpg",
+				"image_url" => "https://agile-chamber-35943.herokuapp.com/ttt.png",
 				"fields" 	=> $board,
 				"color" 	=> $color,
 				"text"		=> $message . "\n" . $attachmentText
