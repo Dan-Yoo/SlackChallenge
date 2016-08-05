@@ -65,9 +65,9 @@ class TicTacToeController
 			return HttpHelper::genericResponse("There is no such user in this channel!");
 		}
 
-		// if (!$this::validatePlayerIsInChannel($playerTwoId, $channelId)) {
-		// 	return HttpHelper::genericResponse("There is no such user in this channel!");
-		// }
+		if (!$this::validatePlayerIsInChannel($playerTwoId, $channelId)) {
+			return HttpHelper::genericResponse("There is no such user in this channel!");
+		}
 
 		$row = array(
 			'player_1' 		=> $playerOne,
@@ -81,16 +81,6 @@ class TicTacToeController
 		return HttpHelper::gameStartResponse($playerOne, $playerTwo);
 	}
 
-	public function getPlayerId($members, $playerName)
-	{
-		foreach ($members as $member) {
-			if ($member['name'] == $playerName) {
-				return $member['id'];
-			}
-		}
-		
-		return '';
-	}
 
 	public function validatePlayerIsInChannel($playerId, $channelId)
 	{
@@ -105,6 +95,16 @@ class TicTacToeController
 		return false;
 	}
 
+	public function getPlayerId($members, $playerName)
+	{
+		foreach ($members as $member) {
+			if ($member['name'] == $playerName) {
+				return $member['id'];
+			}
+		}
+		
+		return '';
+	}
 	/**
 	 * Given the board, checks if the move caused a winning move
 	 *
