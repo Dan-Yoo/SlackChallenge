@@ -6,7 +6,7 @@ include 'DB_connect.php';
 include 'TicTacToeController.php';
 
 	//connect to database
-	$connection = DB_connect()->connect();
+	$connection = DB_connect::connect();
 
 	$controller = new TicTacToeController();
 	$token 		= $_POST['token'];
