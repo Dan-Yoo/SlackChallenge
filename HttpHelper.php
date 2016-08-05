@@ -74,7 +74,7 @@ class HttpHelper
 		);
 
 		$response = array(
-			"image_url"		=> "ttt.png",
+			"image_url"		=> "https://agile-chamber-35943.herokuapp.com/ttt.png",
 			"response_type" => "in_channel",
 			"attachments" 	=> $attachment
 		);
