@@ -157,26 +157,26 @@ class HttpHelper
 	 */
 	public function getMembersList()
 	{
-		// $service_url = 'https://slack.com/api/users.list';
-	 //    $curl = curl_init($service_url);
+		$service_url = 'https://slack.com/api/users.list';
+	    $curl = curl_init($service_url);
 	   
-	 //    $curl_post_data = array(
-	 //        'token' => "xoxp-65223136695-65215629136-66159277874-22716b9ec3"
-	 //    );
-	 //    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-	 //    curl_setopt($curl, CURLOPT_POST, true);
-	 //    curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data);
-		// curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-		// curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+	    $curl_post_data = array(
+	        'token' => "xoxp-65223136695-65215629136-66510917652-ca8156d76e"
+	    );
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    curl_setopt($curl, CURLOPT_POST, true);
+	    curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
 
-	 //    $curl_response = curl_exec($curl);
-	 //    curl_close($curl);
+	    $curl_response = curl_exec($curl);
+	    curl_close($curl);
 
-	 //    $data = json_decode($curl_response, true);
+	    $data = json_decode($curl_response, true);
 
-	 //    $members = $data['members'];
+	    $members = $data['members'];
 
-		// return $members;
+		return $members;
 	}
 
 }
