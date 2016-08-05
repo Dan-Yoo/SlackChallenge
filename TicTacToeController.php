@@ -153,7 +153,7 @@ class TicTacToeController
 	public function isTie($board)
 	{
 		foreach ($board as $tile) {
-			if ($tile == '_') {
+			if (empty($tile)) {
 				return false;
 			}
 		}
