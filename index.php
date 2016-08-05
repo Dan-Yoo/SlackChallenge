@@ -45,10 +45,8 @@ include 'TicTacToeController.php';
 
 		return true;
 	}
-	
+
 	echo HttpHelper::genericResponse("Invalid command. A game is currently in progress!");
 
-	$db->close($connection);
-
-	
+	DB_connect::close($connection);
 ?>

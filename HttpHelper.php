@@ -115,7 +115,7 @@ class HttpHelper
 	    $curl = curl_init($service_url);
 	   
 	    $curl_post_data = array(
-	        'token'   => "xoxp-65223136695-65215629136-66510917652-ca8156d76e",
+	        'token'   => "#",
 	        'channel' => $channelId
 	    );
 
@@ -145,7 +145,7 @@ class HttpHelper
 	    $curl = curl_init($service_url);
 	   
 	    $curl_post_data = array(
-	        'token' => "xoxp-65223136695-65215629136-66510917652-ca8156d76e"
+	        'token' => "#"
 	    );
 
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
