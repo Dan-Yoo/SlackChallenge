@@ -50,10 +50,11 @@ class TicTacToeController
 	 */
 	public function initializeGame($connection, $playerOne, $playerTwo, $channelId)
 	{
+		//slackbot is too stupid to play tic-tac-toe
 		if ($playerTwo == 'slackbot') {
 			return HttpHelper::genericResponse("You can't play against slackbot : (");
 		}
-		//TODO::
+		
 		//validate that player 2 is indeed a user in the current channel
 		//check if playerTwo is in the member list. if yes, get the id. if not return false.
 		$members     = HttpHelper::getMembersList();
