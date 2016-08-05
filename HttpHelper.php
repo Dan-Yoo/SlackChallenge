@@ -65,8 +65,9 @@ class HttpHelper
 			2 => array("title" => $row3),
 		);
 
+		var_dump($data);
 		//make the board to display
-		$this::makeImage($data);
+		//$this::makeImage($data);
 
 		$attachment = array (
 			array(
