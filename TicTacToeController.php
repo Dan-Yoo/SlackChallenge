@@ -60,13 +60,12 @@ class TicTacToeController
 		$members     = HttpHelper::getMembersList();
 		$playerTwoId = $this::getPlayerId($members, $playerTwo);
 		
-
 		if (empty($playerTwoId)) {
 			return HttpHelper::genericResponse("This user doesn't exist!");
 		}
 
 		if (!$this::validatePlayerIsInChannel($playerTwoId, $channelId)) {
-			return HttpHelper::genericResponse("This user is not in this channel!");
+			return HttpHelper::genericResponse("This user is not in this channel! You can only play from channels.");
 		}
 
 		$row = array(
@@ -81,7 +80,14 @@ class TicTacToeController
 		return HttpHelper::gameStartResponse($playerOne, $playerTwo);
 	}
 
-
+	/**
+	 * Validates if the given user id is in the channel
+	 *
+	 * @param string $playerId
+	 * @param string $channelId
+	 * @return boolean
+	 * @author d_yoo
+	 */
 	public function validatePlayerIsInChannel($playerId, $channelId)
 	{
 		$memberIds = HttpHelper::getMembersInChannel($channelId);
@@ -95,6 +101,14 @@ class TicTacToeController
 		return false;
 	}
 
+	/**
+	 * Gets the member id given the member name
+	 *
+	 * @param array $members
+	 * @param string $playerName
+	 * @return string $memberId
+	 * @author d_yoo
+	 */
 	public function getPlayerId($members, $playerName)
 	{
 		foreach ($members as $member) {
@@ -105,6 +119,7 @@ class TicTacToeController
 		
 		return '';
 	}
+
 	/**
 	 * Given the board, checks if the move caused a winning move
 	 *
@@ -117,20 +132,21 @@ class TicTacToeController
 	 */
 	public function isWinning($board, $rowPlayed, $columnPlayed, $symbol)
 	{
+		//checks rows
         if ($board["r" . $rowPlayed . "_c1"] == $symbol &&
             $board["r" . $rowPlayed . "_c2"] == $symbol &&
             $board["r" . $rowPlayed . "_c3"] == $symbol) {
             return true;
         }
 
+        //checks columns
         if ($board["r1_c" . $columnPlayed] == $symbol &&
             $board["r2_c" . $columnPlayed] == $symbol &&
             $board["r3_c" . $columnPlayed] == $symbol) {
             return true;
         }
 
-        //check diagonals if coordinates were 
-        // 11 13 31 33 22
+        //check diagonals 
         if (($rowPlayed != 2 && $columnPlayed != 2) || ($rowPlayed == 2 && $columnPlayed == 2)) {
             if ($board['r1_c1'] == $symbol &&
                 $board['r2_c2'] == $symbol &&
@@ -219,6 +235,7 @@ class TicTacToeController
 				return HttpHelper::genericResponse("It isn't your turn to play!");
 			}
 		}
+
 		//validate their entry
 		$inputRow	 = substr($command, 4, 1);
 		$inputColumn = substr($command, 5, 1);
@@ -230,7 +247,6 @@ class TicTacToeController
 			if (!empty($row[$inputString])) {
 				return HttpHelper::genericResponse("This spot was already played on!");
 			}
-
 
 			//insert into the table.
 			$data 		= array('turn' => $turn, $inputString => $symbol);

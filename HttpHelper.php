@@ -1,5 +1,10 @@
 <?php
 
+/**
+* Class that stores all response types and API callings
+*
+* @author   d_yoo
+*/
 class HttpHelper
 {
 	/**

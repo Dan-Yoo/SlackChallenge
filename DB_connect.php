@@ -1,5 +1,10 @@
 <?php
 
+/**
+* Class that handles db connections
+*
+* @author   d_yoo
+*/
 class DB_Connect
 {
     public function connect()
