@@ -144,6 +144,24 @@ class TicTacToeController
 	}
 
 	/**
+	 * Given the board, checks if the game is a tie
+	 *
+	 * @param array $board
+	 * @return boolean
+	 * @author d_yoo
+	 */
+	public function isTie($board)
+	{
+		foreach ($board as $tile) {
+			if ($tile == '_') {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
 	 * Displays the board state
 	 *
 	 * @param $connection
@@ -226,6 +244,12 @@ class TicTacToeController
 				$winMessage =  $user . " has won!";
 
 				return HttpHelper::displayResponse($winMessage, $displayRow, "good", false);
+			}
+
+			if ($this->isTie($displayRow)) {
+				$tieMessage = "Game has ended as a tie! Good game!";
+
+				return HttpHelper::displayResponse($tieMessage, $displayRow, "good", false);
 			}
 
 			//print a normal response to confirm the move
