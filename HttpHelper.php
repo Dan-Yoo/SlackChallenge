@@ -82,26 +82,6 @@ class HttpHelper
 		return json_encode($response);
 	}
 
-
-	/**
-	 * Response for game winning move
-	 *
-	 * @param string $winner
-	 * @return json response
-	 * @author d_yoo
-	 */
-	public function winnerResponse($winner)
-	{
-		$message = "Game has ended! /n Winner is " . $winner;
-
-		$response = array(
-			"response_type" => "in_channel",
-			"text" 			=> $message
-		);
-
-		return json_encode($response);
-	}
-
 	/**
 	 * Response for game winning move
 	 *
@@ -130,9 +110,10 @@ class HttpHelper
 	    $curl = curl_init($service_url);
 	   
 	    $curl_post_data = array(
-	        'token'   => "#",
+	        'token'   => "xoxp-65223136695-65215629136-66510917652-ca8156d76e",
 	        'channel' => $channelId
 	    );
+
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    curl_setopt($curl, CURLOPT_POST, true);
 	    curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data);
@@ -144,9 +125,7 @@ class HttpHelper
 
 	    $data = json_decode($curl_response, true);
 
-	    $memberIds = $data['channel']['members'];
-
-		return $memberIds;
+		return $data['channel']['members'];
 	}
 
 	/**
@@ -161,8 +140,9 @@ class HttpHelper
 	    $curl = curl_init($service_url);
 	   
 	    $curl_post_data = array(
-	        'token' => "#"
+	        'token' => "xoxp-65223136695-65215629136-66510917652-ca8156d76e"
 	    );
+
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    curl_setopt($curl, CURLOPT_POST, true);
 	    curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data);
@@ -174,9 +154,7 @@ class HttpHelper
 
 	    $data = json_decode($curl_response, true);
 
-	    $members = $data['members'];
-
-		return $members;
+		return $data['members'];
 	}
 
 }
