@@ -156,7 +156,7 @@ class TicTacToeController
 		if ($this::verifyExistingGame($connection, $channelId)) {
 			$query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
 			$result = pg_query($connection, $query);
-			$row 	= pg_fetch_array($result, 0, PGSQL_ASSOC);
+			$row 	= pg_fetch_array($result, 0, PGSQL_BOTH);
 
 			return HttpHelper::displayResponse("This is the current board", $row, "good");
 		}
@@ -178,7 +178,7 @@ class TicTacToeController
 	{
 		$query 	= "SELECT * FROM public.tictactoe WHERE channel_id = '" . $channelId . "'";
 		$result = pg_query($connection, $query);
-		$row 	= pg_fetch_array($result, 0, PGSQL_ASSOC);
+		$row 	= pg_fetch_array($result, 0, PGSQL_BOTH);
 
 		//check if it actually is the users turn
 		if ($row['turn'] == 1) {
@@ -215,8 +215,9 @@ class TicTacToeController
 			$update 	= pg_update($connection, 'tictactoe', $data, $condition);
 
 			$displayResult = pg_query($connection, $query);
-			$displayRow    = pg_fetch_array($displayResult, 0, PGSQL_ASSOC);
+			$displayRow    = pg_fetch_array($displayResult, 0, PGSQL_BOTH);
 
+			//check if this was a winning move. if yes, delete the row, print message
 			if ($this->isWinning($displayRow, $inputRow, $inputColumn, $symbol)) {
 
 				$this::destroyBoard($connection, $channelId);
@@ -227,6 +228,7 @@ class TicTacToeController
 				return HttpHelper::displayResponse($winMessage, $displayRow, "good", false);
 			}
 
+			//print a normal response to confirm the move
 			return HttpHelper::displayResponse("Good move!", $displayRow, "good");
 		}
 	}
