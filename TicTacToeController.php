@@ -12,7 +12,7 @@ class TicTacToeController
 	 */
 	public function verifyToken($token)
 	{
-		if ($token != 'tywWH21kkZOVWWB7tGQLbbzc') {
+		if ($token != 'sZHWJiYFGt8pMmsND2KqLRpm') {
 			die("What are you doing here >:( You need permission!");
 		}
 	}
